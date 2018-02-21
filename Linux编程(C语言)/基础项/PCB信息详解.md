@@ -2,7 +2,7 @@
 
 > task_struct是进程描述符。操作系统通过task_struct感知进程的存在。
 
-![](https://github.com/NiceNelg/Note/blob/master/Linux%E7%BC%96%E7%A8%8B(C%E8%AF%AD%E8%A8%80)/%E5%9F%BA%E7%A1%80%E9%A1%B9/images/1.jpeg?raw=true)
+![](./images/1.jpeg?raw=true)
 
 > 在linux中每一个进程都由task_struct 数据结构来定义.task_struct就是我们通常所说的PCB。 ta是对进程控制的唯一手段也是最有效的手段. 当我们调用fork() 时,系统会为我们产生一个task_struct结构。然后从父进程,那里继承一些数据, 并把新的进程插入到进程树中,以待进行进程管理。因此了解task_struct的结构对于我们理解任务调度(在linux 中任务和进程是同一概念)的关键。
 

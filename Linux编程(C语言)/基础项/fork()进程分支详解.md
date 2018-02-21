@@ -9,7 +9,7 @@
 
 功能解析：
 
-​	![](https://github.com/NiceNelg/Note/blob/master/Linux%E7%BC%96%E7%A8%8B(C%E8%AF%AD%E8%A8%80)/%E5%9F%BA%E7%A1%80%E9%A1%B9/images/2.jpg?raw=true)
+​	![](./images/2.jpg?raw=true)
 
 1. 父进程初始化。
 2. 父进程调用fork，这是一个系统调用，因此进入内核。

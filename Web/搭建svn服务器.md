@@ -7,13 +7,13 @@
 1. yum install subversion
 2. 输入rpm -ql subversion查看安装位置，如下图： 
 
-![](https://github.com/NiceNelg/Note/blob/master/Web/images/1.jpg?raw=true)
+![](./images/1.jpg?raw=true)
 
 > 我们知道svn在bin目录下生成了几个二进制文件。
 >
 > 输入 svn --help可以查看svn的使用方法，如下图。
 >
-> ![](https://github.com/NiceNelg/Note/blob/master/Web/images/2.jpg?raw=true)
+> ![](./images/2.jpg?raw=true)
 
 3. 创建svn版本库目录
 
@@ -25,7 +25,7 @@
 
    > 执行了这个命令之后会在/var/svn/svnrepos目录下生成如下这些文件
    >
-   > ![](https://github.com/NiceNelg/Note/blob/master/Web/images/3.jpg?raw=true)
+   > ![](./images/3.jpg?raw=true)
 
 5. 进入conf目录（该svn版本库配置文件）
 
