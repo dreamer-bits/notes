@@ -122,4 +122,126 @@ inoremap ' ''<ESC>i
      let Tlist_Use_Right_Window = 1	"在右边打开窗口  
      ```
 
-     ​
+### 代码补全
+
+> YouCompleteMe要求Vim版本大于等于7.4。检查Vim版本命令如下：`vim --version`
+
+1. 更新vim
+
+   ```shell
+   sudo add-apt-repository ppa:jonathonf/vim
+   sudo apt-get update
+   sudo apt-get install vim
+   ```
+
+2. 下载Vundle（vim插件管理器，必须）
+
+   ```shell
+   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+   ```
+
+3. 安装Vundle （在 `～/.vimrc` 文件中添加）
+
+   ```shell
+   set nocompatibl
+
+   filetype off
+
+   set rtp+=~/.vim/bundle/Vundle.vim
+
+   call vundle#begin()
+
+   Plugin 'VundleVim/Vundle.vim'
+
+   call vundle#end()
+
+   filetype plugin indent on
+   ```
+
+   保存后重新打开vim输入：
+
+   :PluginInstall
+
+   显示done表示安装完成
+
+4. 下载YouCompleteMe
+
+   ```shell
+   set nocompatibl
+
+   filetype off
+
+   set rtp+=~/.vim/bundle/Vundle.vim
+
+   call vundle#begin()
+
+   Plugin 'VundleVim/Vundle.vim'
+   Plugin 'Valloric/YouCompleteMe'
+
+   call vundle#end()
+
+   filetype plugin indent on
+   ```
+
+   保存后重新打开vim输入：
+
+   :PluginInstall
+
+   显示done表示安装完成
+
+   > 注：若提示下载失败可直接进行下一步执行
+
+   > ps：最好的方式是用网络将YouCompleteMe从git下载下来放到`～/.vim/bundle/YouCompleteMe`文件		  目录中
+
+5. 检查完整性（在 `～/.vim/bundle/YouCompleteMe` 目录下）
+
+   ```shell
+   git submodule update --init --recursive
+   ```
+
+6. 下载安装最新版的 libclang
+
+   ```shell
+   apt-get install llvm-3.9 clang-3.9 libclang-3.9-dev libboost-all-dev
+   apt-get install cmake python3-dev
+   ```
+
+7. 编译构建 ycm_core 库
+
+   ```shell
+   ./install.sh --clang-completer --system-libclang
+   ```
+
+   > 注：打开vim后可能会提示ycmd server shutdown....
+   >
+   > 解决方法如下：
+   >
+   > 先确定系统中有libclang.so
+   >
+   > 输入命令：locate libclang.so 
+   >
+   > 然后在~/.vim/bundle/YouCompleteMe目录下输入：./install.sh --clang-completer --system-libclang
+
+8. 配置vim
+
+   > 修改`~/.vimrc`文件
+
+   ```shell
+   let g:ycm_global_ycm_extra_conf='/root/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py' 
+   let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全  
+   let g:ycm_confirm_extra_conf=0	" 打开vim时不再询问是否加载ycm_extra_conf.py配置  
+   inoremap <expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"    "回车即选中当前项  
+   set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228) 
+   let g:ycm_key_invoke_completion = '<C-a>' "（默认是 <C-Space>）
+
+   ```
+
+   > 注意第一句，/root/.vim这部分不一定通用，根据自己当前登陆的账户来定，我的使用root登陆的，所以这部分就是/root/
+
+9. 补全 C 语言全局函数问题(`vim ~/.vimrc`文件修改)
+
+   默认情况下输入 ., ->, :: 之后会触发补全函数和类， 但是默认情况下是不补全全局函数的，所以 C 语言中的 printf 之类的函数就无法补全
+
+   解决办法就是手动调用补全，对应的 YCM 函数是 ycm_key_invoke_completion
+
+   将其绑定到快捷键 let g:ycm_key_invoke_completion = '\<C-a>' " 自动补全配置
