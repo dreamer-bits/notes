@@ -93,7 +93,7 @@
 
    > 注意去掉{}
 
-2. 在终端下执行  git config --global credential.helper store
+2. 在终端下执行  `git config --global credential.helper store`
 
 3. 可以看到`~/.gitconfig`文件，会多了一项：
 

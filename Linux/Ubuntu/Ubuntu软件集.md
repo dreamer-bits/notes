@@ -29,3 +29,16 @@
      ```
 
      > 执行完上述操作后打开unity-tweak-tool软件选择Flatabulous主题和ultra-flat图标。
+
+* Typora编辑器：
+
+  ```shell
+  # 可选的，但推荐
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+  # 添加 Typora 的仓库
+  sudo add-apt-repository 'deb https://typora.io ./linux/'
+  sudo apt-get update
+  # 安装 typora
+  sudo apt-get install typora
+  ```
+
