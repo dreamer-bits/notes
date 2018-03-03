@@ -139,3 +139,62 @@ git commit -am "提交说明"
   ```
 
   删除不需要的代码和标记，使用`git commit-am "提交说明"`即可
+
+### Git使用ssh登录
+
+1. 设置Git的user name和email：
+
+   ```shell
+   git config --global user.name "用户名"
+   git config --global user.email "邮箱地址"
+   ```
+
+2. 生产SSH公私秘钥：
+
+   `ssh-keygen -t rsa -C "邮箱地址"`
+
+   > 按3次回车，得到两个文件`id_rsa`是秘钥，`id_rsa.pub`是公钥
+
+3. 打开`https://github.com/`在settings中点击添加SSH keys就可设置成功
+
+### 搭建自己的Git仓库
+
+1. 创建git用户，专门用来管理git仓库
+
+   `adduser git`
+
+2. 收集所有需要使用这个仓库的用户的公钥，也就是`id_rsa.pub`文件，将其导入到`/home/git/.ssh/authorized_keys`文件中，一行一个
+
+   > 注意：上述步骤创建出的所有文件及文件夹在git用户下的权限最少为755
+
+3. 修改`/etc/passwd`配置文件，禁止git用户登录shell
+
+   ```shell
+   git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+   ```
+
+4. 修改ssh配置文件，使authorized_keys文件中的公钥对应的用户可以下载代码，配置文件目录在`/etc/ssh/sshd_config`中，修改项如下：
+
+   ```shell
+   AuthorizedKeysFile .ssh/authorized_keys
+   RSAAuthentication yes
+   PubkeyAuthentication yes
+   ```
+
+5. 初始化git仓库，首先要选定一个目录作为git仓库，假定为`/home/git/srv/test.git`
+
+   ```shell
+   git init --bare test.git
+   chown -R git:git test.git
+   ```
+
+   > git仓库通常以.git结尾，所以我们要仓库里所有文件的所有者和所属组都修改为git用户及git用户组
+
+6. 用户下载代码
+
+   ```shell
+   #用户@用户主机，git是用户，server是git所在主机的IP
+   git clone git@10.10.102.188:/srv/test.git
+   ```
+
+   ​
