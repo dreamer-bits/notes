@@ -1,40 +1,45 @@
 # Linux常用命令
 
-- 查看占用端口进程：`netstat -nltp`
+##### 查看占用端口进程
 
-- screen操作：
+`netstat -nltp`
 
-  创建screen：`screen -S 名字`
+##### screen操作
 
-  暂离screen：`ctrl + a + d`
+创建screen：`screen -S 名字`
 
-  返回screen：`screen -r 名字`
+暂离screen：`ctrl + a + d`
 
-  删除screen：`ctrl + a + k`
+返回screen：`screen -r 名字`
 
-  关闭screen：`exit`
+删除screen：`ctrl + a + k`
 
-  查看screen列表：`screen -ls`
+关闭screen：`exit`
 
-- 打开FTP服务
+查看screen列表：`screen -ls`
 
-  重启vsftpd服务：`service vsftpd restart`
+##### 打开FTP服务
 
-  停止vsftpd服务：`service vsftpd stop`
+重启vsftpd服务：`service vsftpd restart`
 
-  启动vsftpd服务：`service vsftpd start`
+停止vsftpd服务：`service vsftpd stop`
 
-  查询Vsftpd在运行模式下是否开机启动：`chkconfig --list |grep vsftpd`
+启动vsftpd服务：`service vsftpd start`
 
-  设置开机启动：`chkconfig vsftpd on`
+查询Vsftpd在运行模式下是否开机启动：`chkconfig --list |grep vsftpd`
 
-- 新建用户
+设置开机启动：`chkconfig vsftpd on`
 
-  ```shell
-  useradd -m user1
-  passwd user1
-  ```
+##### 新建用户
 
-- 查看文件大小：`du -sh 目录`
+```shell
+useradd -m user1
+passwd user1
+```
+##### 查看文件大小
 
-- 解压zip文件出现乱码：`unar`
+`du -sh 目录`
+
+##### 解压zip文件出现乱码：
+
+`unar`
