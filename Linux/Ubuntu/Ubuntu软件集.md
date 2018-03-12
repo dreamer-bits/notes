@@ -6,29 +6,27 @@
 
 ### ubuntu主题：
 
-1. `sudo apt-get install unity-tweak-tool`
+```shell
+sudo apt-get install unity-tweak-tool
+#ubuntu16还需要执行一下命令：
+#wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 
-2. ubuntu16还需要执行一下命令：
+#sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
 
-   ```shell
-   wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+#sudo apt-get update
 
-   sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+#sudo apt-get install ubuntu-tweak
 
-   sudo apt-get update
+wget https://github.com/anmoljagetia/Flatabulous/releases/download/16.04.1/Flatabulous-Theme.deb
 
-   sudo apt-get install ubuntu-tweak
+sudo add-apt-repository ppa:noobslab/icons
 
-   wget https://github.com/anmoljagetia/Flatabulous/releases/download/16.04.1/Flatabulous-Theme.deb
+sudo apt-get update
 
-   sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get install ultra-flat-icons
+```
 
-   sudo apt-get update
-
-   sudo apt-get install ultra-flat-icons
-   ```
-
-   > 执行完上述操作后打开unity-tweak-tool软件选择Flatabulous主题和ultra-flat图标。
+> 执行完上述操作后打开unity-tweak-tool软件选择Flatabulous主题和ultra-flat图标。
 
 ### Typora编辑器：
 
