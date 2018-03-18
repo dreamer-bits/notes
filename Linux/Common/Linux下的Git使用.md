@@ -197,4 +197,29 @@ git commit -am "提交说明"
    git clone git@10.10.102.188:/srv/test.git
    ```
 
-   ​
+
+### 代理设置和取消
+
+##### 设置：
+
+```shell
+//设置git的http代理方式，http
+git config --global https.proxy http://127.0.0.1:1080
+//设置git的https方式，https
+git config --global https.proxy https://127.0.0.1:1080
+
+//设置git的http方式，socks5
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+//设置git的https方式，socks5
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+```
+
+##### 取消：
+
+```shell
+//取消git的http代理
+git config --global --unset http.proxy
+//取消git的https代理
+git config --global --unset https.proxy
+```
+
