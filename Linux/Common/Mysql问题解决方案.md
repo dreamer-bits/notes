@@ -15,7 +15,7 @@
 在`/etc/my.cnf`的`[mysqld]`中添加 
 
 ```shell
-set sql_mode = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+sql_mode = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 ```
 
 > 使用show variables like '%sql_mode%';查看关于sql_mode的变量，如果没有NO_ZERO_IN_DATE和NO_ZERO_DATE就说明修改成功！
