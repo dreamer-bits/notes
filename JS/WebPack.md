@@ -3,8 +3,8 @@
 ### 安装新版Node和NPM
 
 1. 卸载系统自带的Node和NPM
-   1. sudo apt remove npm
-   2. sudo apt remove node
+   1. sudo apt-get autoremove npm
+   2. sudo apt-get autoremove node
    3. cd /usr/local/bin   //进入该目录中，若有node或者npm文件，将他删除删除
 2. 到[Node.js官网](https://nodejs.org/en/download/current/)下载新版Node.js
 3. 解压下载文件到`/usr/local/node`文件中
@@ -24,3 +24,34 @@
 >
 > `npm config set registry="http://registry.npmjs.org/"`
 
+### 项目搭建
+
+1. 初始化
+
+   在项目目录下执行：`npm init`
+
+2. webpack安装项目依赖
+
+   在项目目录下执行：`npm install webpack --save-dev`
+
+3. 在项目目录下创建并配置webpack.config.js
+
+   ```js
+   let path = require('path');
+   let webpack = require('webpack');
+   module.exports = {
+       entry: './index.js',
+       output: {
+           path: path.join(__dirname, 'dist'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
+           filename: "bundle.js"
+       },
+       module: {
+           rules: [
+
+           ]
+       }
+   };
+
+   ```
+
+4. 最后执行`webpack`命令打包项目
