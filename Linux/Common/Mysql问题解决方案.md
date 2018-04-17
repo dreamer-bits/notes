@@ -2,9 +2,11 @@
 
 ##### 如果重启mysql出现pid找不到的解决方案
 
-运行：`/usr/local/mysql/bin/mysqld stop`
-
-删除mysql数据库目录下的`mysql-bin.index`文件
+- 有可能是mysql已启动：
+  - 运行：`/usr/local/mysql/bin/mysqld stop`
+  - 删除mysql数据库目录下的`mysql-bin.index`文件
+- 有可能是有多个配置文件冲突：
+  - 删除/etc/mysql/my.cnf文件
 
 ##### 复制mysql数据库出现`Incorrect datetime value: '0000-00-00 00:00:00' for column`
 
@@ -15,7 +17,7 @@
 在`/etc/my.cnf`的`[mysqld]`中添加 
 
 ```shell
-set sql_mode = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+sql_mode = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 ```
 
 > 使用show variables like '%sql_mode%';查看关于sql_mode的变量，如果没有NO_ZERO_IN_DATE和NO_ZERO_DATE就说明修改成功！
