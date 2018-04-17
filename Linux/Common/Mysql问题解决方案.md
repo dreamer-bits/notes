@@ -2,9 +2,11 @@
 
 ##### 如果重启mysql出现pid找不到的解决方案
 
-运行：`/usr/local/mysql/bin/mysqld stop`
-
-删除mysql数据库目录下的`mysql-bin.index`文件
+- 有可能是mysql已启动：
+  - 运行：`/usr/local/mysql/bin/mysqld stop`
+  - 删除mysql数据库目录下的`mysql-bin.index`文件
+- 有可能是有多个配置文件冲突：
+  - 删除/etc/mysql/my.cnf文件
 
 ##### 复制mysql数据库出现`Incorrect datetime value: '0000-00-00 00:00:00' for column`
 
