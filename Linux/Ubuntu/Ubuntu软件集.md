@@ -39,3 +39,17 @@ sudo apt-get update
 # 安装 typora
 sudo apt-get install typora
 ```
+### Wine兼容层软件
+
+```shell
+sudo add-apt-repository ppa:wine/wine-builds
+sudo apt-get update
+sudo apt-get install --install-recommends wine-staging
+sudo apt-get install winehq-staging
+sudo apt-get install ppa-purge
+sudo ppa-purge ppa:wine/wine-builds
+
+#打开配置
+winecfg
+```
+
