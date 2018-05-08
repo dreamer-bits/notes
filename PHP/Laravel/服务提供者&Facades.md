@@ -52,9 +52,7 @@ class AppServiceProvider extends ServiceProvider {
     }
 
     public function register() {
-
         $this->registerTestModel();
-
     }
 
     private function registerTestModel() {
@@ -82,14 +80,14 @@ class AppServiceProvider extends ServiceProvider {
 }
 ```
 
-2. 这里把命名空间是App\Models的Test类注册为单例模式，并且取个别名testmodel
+4. 这里把命名空间是App\Models的Test类注册为单例模式，并且取个别名testmodel
 
-   > 这个类的文件位置Lib\\Facades\\TestFacades.php.
+   > 这个类的文件位置Lib\\Facades\\TestFacades.php
 
+5. 通过继承Facade，重载getFacadeAccessor方法，返回之前绑定的单例模式的类的别名。
 
+6. 使用Facade
 
-4. 通过继承Facade，重载getFacadeAccessor方法，返回之前绑定的单例模式的类的别名。
-5. 使用Facade
 6. 经过前面的步骤后，可以使用Test这个Facade了，如下示例是在控制器中使用Facade的方式。
 
 ```c
