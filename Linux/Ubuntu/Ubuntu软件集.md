@@ -42,14 +42,23 @@ sudo apt-get install typora
 ### Wine兼容层软件
 
 ```shell
+sudo dpkg --add-architecture i386
 sudo add-apt-repository ppa:wine/wine-builds
 sudo apt-get update
 sudo apt-get install --install-recommends wine-staging
 sudo apt-get install winehq-staging
-sudo apt-get install ppa-purge
-sudo ppa-purge ppa:wine/wine-builds
+sudo apt-get install cabextract
+wget http://winetricks.org/winetricks
+sh winetricks corefonts Tahoma
 
 #打开配置
 winecfg
+
+#卸载wine主程序,在终端里输入:
+sudo apt-get remove --purge wine
+#然后删除wine的目录文件:
+rm -r ~/.wine
+#卸载残留不用的软件包:
+sudo apt-get autoremove
 ```
 
