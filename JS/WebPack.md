@@ -15,6 +15,10 @@
 5. 添加淘宝镜像
    1. `sudo npm config set registry https://registry.npm.taobao.org `
    2. `source ~/.bashrc`  使修改立即生效
+6. 安装cnpm
+   1. `npm i -g cnpm --registry=https://registry.npm.taobao.org`
+   2. 创建软连接：`sudo ln -s /usr/local/node/bin/cnpm /usr/local/bin/cnpm`
+   3. `source ~/.bashrc`  使修改立即生效
 
 ### 全局安装WebPack
 
@@ -55,3 +59,4 @@
    ```
 
 4. 最后执行`webpack`命令打包项目
+
