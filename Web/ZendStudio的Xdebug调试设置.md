@@ -60,6 +60,13 @@ xdebug.remote_autostart = 1		#自动开启xdebug
 xdebug.remote_port=9001		#调试端口
 ```
 
+5. 修改php-fpm.conf文件（与php.ini同一目录）
+
+```php
+#修改request_terminate_timeout项为0，重启php-fpm进程
+request_terminate_timeout = 0
+```
+
 ### ZendStudio配置
 
 1. 配置项目服务器：`window->Preferences->PHP->servers->New->PHP Server`
@@ -68,7 +75,9 @@ xdebug.remote_port=9001		#调试端口
 
    BaseUrl：访问地址
 
-   Debuger：xdebug、端口为php配置文件的端口
+   Debuger：xdebug、端口为php配置文件的端口，点击Global Settings
+
+   Global Settings：Accept remote session选择prompt，Capture stdout选择off，Capture stderr选择off
 
 2. 配置debug选项：`window->Preferences->PHP->Debug->PHP Server`
 
