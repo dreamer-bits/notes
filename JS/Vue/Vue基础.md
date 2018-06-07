@@ -14,7 +14,7 @@
   <div id="app">
   	<input v-model="{{test}}"/>
   </div>
-
+  
   <script>
       var app = new Vue({
           el:"#app",
@@ -37,6 +37,10 @@
   <div :class="[属性1，属性2]" :style="{dispaly:none}"></div>
   ```
 
+- `v-html`：输出变量数据到html标签中，若内容含html代码可被浏览器转换。
+
+- `v-text`：输出变量数据到html标签中，若内容含html代码则会转换成实体字符，不会被浏览器转换。
+
 ### 创建子组件
 
 1. 创建全局子组件：
@@ -45,7 +49,7 @@
    <ul id="app">
        <Item :content="item" v-for:"item in array"></item>
    </ul>
-
+   
    <script>
        Vue.component("Item", {
            props:['content'],		//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
@@ -66,7 +70,7 @@
    <ul id="app">
        <Item :content="item" v-for:"item in array"></item>
    </ul>
-
+   
    <script>
        var Item = {
            props:['content'],		//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
@@ -94,7 +98,7 @@
            @delte="pullValue"
        ></item>
    </ul>
-
+   
    <script>
        var Item = {
            props:['content'],		//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
@@ -122,4 +126,53 @@
    </script>
    ```
 
-   ​
+### Vue实例常用属性
+
+- 生命周期内各时间点触发的对象属性
+  - `beforeCreate:Function`：在Vue实例创建完成之前触发beforeCreate`属性的匿名函数。
+  - `created:Function`：在Vue实例创建完成之后触发`created`属性的匿名函数。
+  - `beforeMount:Function`：在Vue实例挂在到html实体前触发`beforeMount`属性的匿名函数。
+  - `mounted:Function`：在Vue实例挂在到html实体后触发`mounted`属性的匿名函数。
+  - `beforeDestory:Function`：在Vue实例销毁前触发`beforeDestory`属性的匿名函数。
+  - `destoryed:Function`：在Vue实例销毁后触发`destoryed`属性的匿名函数，Vue实例的所有属性方法都不能在此方法内使用。
+
+- Vue实例运行中常用的对象属性
+
+  - `methods:object`：在Vue实例中的methods的json对象中可定义多个方法调用。
+
+  - `computed:object`：计算属性，在object中可定义多个方法，方法中涉及到的数据发生变更的时候都会执行对应的方法，如：
+
+    ```html
+    <div id="app">{{fullName}}</div>
+    
+    <script>
+        var app = new Vue({
+           el:"#app",
+           data:{
+               firstName: "Nelg",
+               lastName: "Wang"
+            },
+            computed:{
+                //简易，Vue实例中的data对应的属性值方法变化的时候执行
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                },
+                //复杂
+                fullName: {
+                    //Vue实例中的data对应的属性值方法变化的时候执行
+                    get: function() {
+                    	return this.firstName + " " + this.lastName;
+                	},
+                    //通过app.$fullName = 'Nelg wang'设置fullName的值的时候触发set方法，设置的值通过形参value传入。
+                    set: function(value) {
+                        let arr = value.splice(" ");
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    }
+                }
+            }
+        });
+    </script>
+    ```
+
+    
