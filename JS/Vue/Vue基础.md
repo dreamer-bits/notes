@@ -168,6 +168,8 @@
                         let arr = value.splice(" ");
                         this.firstName = arr[0];
                         this.lastName = arr[1];
+                        //因为fullName的get方法中涉及到firstName和lastName属性，
+                        //因此当set方法执行完之后还会执行get方法。
                     }
                 }
             }
