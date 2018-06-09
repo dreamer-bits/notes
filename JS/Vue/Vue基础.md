@@ -52,7 +52,24 @@
    
    <script>
        Vue.component("Item", {
-           props:['content'],		//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
+           props:{
+               //单类型
+               content: String,
+               //多类型
+               content: [String, Number, Object],
+               //复杂用法
+               content: {
+                   type: [String, Number, Object],
+                   //是否必传
+                   required: true，
+                   //默认值
+                   default: '123',
+                   //验证
+                   validator: function(value) {
+                   	return (value.length > 5);
+               	}
+               }
+           },//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
            template: "<li>{{content}}</li>"
        });
        var app = new Vue({
@@ -73,7 +90,20 @@
    
    <script>
        var Item = {
-           props:['content'],		//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
+           props:{
+               //单类型
+               content: String,
+               //多类型
+               content: [String, Number, Object],
+               //复杂用法
+               content: {
+                   type: [String, Number, Object],
+                   //是否必传
+                   required: true，
+                   //默认值
+                   default: '123'
+               }
+           },//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
            template: "<li>{{content}}</li>"
        });
        var app = new Vue({
