@@ -189,6 +189,52 @@
     - sort：对数组进行排序
     - reverse：对数组进行反转
 
+- 页面元素的挂载
+
+  - 在挂载页面元素的时候，可能会出现以下情况：
+
+    ```html
+    <table>
+    	<tbody>
+        	<row></row>
+        	<row></row>
+        	<row></row>
+        </tbody>
+    </table>
+    
+    <script>
+    	var Item = {
+            template: "<tr><td>This is row</td></tr>",
+        });
+        var app = new Vue({
+           el:"#app"
+        });
+    </script>
+    ```
+
+    > 当页面运行的时候有可能`row`子组件并没有挂载在tbody中，这是因为h5的标签规则规定了table标签中一定要有tbody，tbody下只能嵌入tr标签，当有其他类型的html标签嵌入的时候就会将标签转移到tbody之外，因此Vue给出的解决方案是使用`:is="组件名"`的标签语法，如下：
+
+    ```html
+    <table>
+    	<tbody>
+        	<tr :is="row"></tr>
+        	<tr :is="row"></tr>
+        	<tr :is="row"></tr>
+        </tbody>
+    </table>
+    
+    <script>
+    	var row = {
+            template: "<tr><td>This is row</td></tr>",
+        });
+        var app = new Vue({
+           el:"#app"
+        });
+    </script>
+    ```
+
+  - 在Vue中不建议使用id属性绑定元素，而是使用`key="唯一标识"`的方法来绑定页面元素。
+
 ### Template标签
 
 `template`html标签在Vue中只作占位标签作用，因此template不会对现有的html以及css样式产生影响。
