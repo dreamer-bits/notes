@@ -203,8 +203,8 @@
     </table>
     
     <script>
-    	var Item = {
-            template: "<tr><td>This is row</td></tr>",
+        Vue.component('row', {
+            template: "<tr><td>This is row</td></tr>"
         });
         var app = new Vue({
            el:"#app"
@@ -224,8 +224,8 @@
     </table>
     
     <script>
-    	var row = {
-            template: "<tr><td>This is row</td></tr>",
+    	Vue.component('row', {
+            template: "<tr><td>This is row</td></tr>"
         });
         var app = new Vue({
            el:"#app"
