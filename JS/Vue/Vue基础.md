@@ -207,6 +207,36 @@
     </script>
     ```
 
+### Template标签
+
+​	 `template`标签在Vue中只作占位标签作用，因此template不会对现有的html以及css样式产生影响。
+
+### 插槽
+
+- 在组件中有可能需要插入html标签，就需要用到插槽概念，语法如下：
+
+  ```html
+  <div id="app">
+  	<row>
+          <div slot="header">header</div>
+          <div slot="footer">footer</div>
+      </row>
+  </div>
+  
+  <script>
+      Vue.component('row', {
+          template: `<div>
+  					<slot name="header"></slot>
+  					<div>This is row</div>
+  					<slot name="footer"></slot>
+      			   </div>`
+      });
+      var app = new Vue({
+         el:"#app"
+      });
+  </script>
+  ```
+
 ### Vue注意项
 
 - 数组
@@ -268,7 +298,3 @@
 - 事件监听：
 
   - 在Vue中，若是在子组件挂载的html节点挂载点绑定事件表示是监听自定义事件，可以通过vm.$emit("事件名")，触发父级组件监听的自定义事件，子组件的事件需要在挂载元素的实体html中定义。若需要在子组件的挂载点需要定义原生事件需要在事件名后添加.native属性。如：@click.native。
-
-### Template标签
-
-`template`html标签在Vue中只作占位标签作用，因此template不会对现有的html以及css样式产生影响。
