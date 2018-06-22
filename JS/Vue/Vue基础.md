@@ -298,3 +298,46 @@
 - 事件监听：
 
   - 在Vue中，若是在子组件挂载的html节点挂载点绑定事件表示是监听自定义事件，可以通过vm.$emit("事件名")，触发父级组件监听的自定义事件，子组件的事件需要在挂载元素的实体html中定义。若需要在子组件的挂载点需要定义原生事件需要在事件名后添加.native属性。如：@click.native。
+
+- 在子组件中使用`data`字段时只能为函数，且需要返回字段，如：
+
+  ```html
+  <ul id="app">
+      <Item
+      	:content="item" 
+          v-for:"item in array"
+          @delte="pullValue"
+      ></item>
+  </ul>
+  
+  <script>
+      var Item = {
+          props:['content'],		//传递父级组件数据到子组件中，这里是将item传递到子组件的content中。
+          template: "<li @click='pushValue(content)'>{{content}}</li>",
+          methods:{
+              pushValue: function(value) {
+                  this.$emit("delete", value);	//触发当前实例（即根实例）上的事件
+              }
+          },
+          data() {
+              return {};
+          }
+      });
+      var app = new Vue({
+         el:"#app",
+         components:{
+             Item:Item
+         },
+         data:{
+             list:[]
+          },
+          methods:{
+              pullValue:function(value) {
+                  console.log(value);
+              }
+          }
+      });
+  </script>
+  ```
+
+  
