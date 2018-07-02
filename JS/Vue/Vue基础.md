@@ -47,7 +47,7 @@
 
    ```html
    <ul id="app">
-       <Item :content="item" v-for:"item in array"></item>
+       <Item :content="item" v-for:"item in array"></Item>
    </ul>
    
    <script>
