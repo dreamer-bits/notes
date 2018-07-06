@@ -83,6 +83,10 @@
 
     - git fetch
 
+  - 切换远程分支：
+
+    - git checkout -b 本地分支名 remotes/origin/dev（需要关联的远程分支）
+
 ### Linux记住git密码
 
 1. 在`~/`下， touch创建文件 `.git-credentials`, 用vim编辑此文件，输入：
