@@ -49,6 +49,6 @@ server{
         }
         ###################添加项 end
 
-        access_log  /var/www/logs/hcloud.log;
+        access_log  /var/www/logs/项目.log;
  }
 ```
