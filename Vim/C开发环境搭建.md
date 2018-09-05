@@ -25,8 +25,9 @@ set ts=4 "空格数量
 set shiftwidth=4 "自动缩进的宽度
 set showmatch
 set nobackup
+"检测到如下文件格式将tab替换成ts的配置
 if has("autocmd")
-autocmd FileType h,xml,html,c,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,conf,ini set expandtab
+autocmd FileType xml,html,c,h,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,conf,ini set expandtab
 endif
 
 "just for encode
@@ -42,10 +43,10 @@ set splitbelow
 set tags+=~/.vim/systags
 set tags+=/home/nelg/workspace/tags
 
-if filereadable(".automark.vim")
-    so ~/.automark.vim
+"加载Vundle配置文件
+if filereadable(expand("~/.vim/config/Vundle.vim"))
+    source ~/.vim/config/Vundle.vim
 endif
-
 ```
 
 ### Ctags（查看源码）
