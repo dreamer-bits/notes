@@ -86,7 +86,7 @@ sudo apt-get install openssh-server
 
 将文件中的PermitRootLogin without-password语句注释掉并修改成PermitRootLogin yes
 
-### 防火墙
+### 防火墙（默认无）
 
 开启：`sudo ufw enable`
 
@@ -117,3 +117,26 @@ sudo ufw allow from 10.0.0.0/8
 sudo ufw allow from 172.16.0.0/12
 
 sudo ufw allow from 192.168.0.0/16
+
+### Iptables
+
+> Ubuntu默认装了IP 信息包过滤系统iptables，且没有关闭命令
+
+- 启动iptables：`modprobe ip_tables`
+
+- 关闭iptables（关闭命令要比启动复杂）
+
+  ```shell
+  #清除预设表filter中的所有规则链的规则
+  iptalbes -F
+  #清除预设表filter中使用者自定链中的规则
+  iptables -X
+  iptables -Z
+  #抛弃所有不符合三种链规则的数据包
+  iptables -P INPUT ACCEPT
+  iptables -P OUTPUT ACCEPT
+  iptables -P FORWARD ACCEPT
+  modprobe -r ip_tables
+  ```
+
+- 
