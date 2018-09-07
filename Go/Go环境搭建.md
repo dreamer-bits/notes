@@ -28,3 +28,17 @@
    ```
 
 6. 运行`source /etc/profile`命令使配置生效
+
+### Go编辑器
+
+1. `cd /usr/local`
+2. `git clone https://github.com/visualfc/liteide.git`
+3. `sudo apt-get update`
+4. `sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui libqtwebkit-dev g++`
+5. `chmod -R 777 ./liteide`
+6. `cd ./liteide/build`
+7. `./update_pkg.sh`
+8. `QTDIR=/usr ./build_linux.sh`
+9. `cd /usr/local`
+10. `mv liteide liteide.bak`
+11. `mv liteide.bak/build liteide`
