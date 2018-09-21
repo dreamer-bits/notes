@@ -89,6 +89,34 @@
 
     - git checkout -b 本地分支名 remotes/origin/dev（需要关联的远程分支）
 
+### Git操作
+
+- 查看日志：`git log`
+
+- 查看`commit`提交记录详情：
+
+  - 含文件修改记录详情：`git show <commit_id>`
+  - 仅显示修改文件列表：`git show --stat <commit_id>`
+
+- 查看本地修改记录详情：
+
+  - 含文件修改记录详情：`git diff <目录路径>`
+  - 仅显示修改文件列表：`git diff --stat <目录路径>`
+
+- 回滚到某个`commit`记录上：`git reset --hard <commit_id>` 
+
+- 因回滚导致`commit`日志丢失，可查看回滚记录：`git reflog`
+
+- 强制提交：`git push -f origin 分支`
+
+- 强制拉取，并覆盖本地文件：
+
+  ```shell
+  git fetch --all  
+  git reset --hard origin/master 
+  git pull
+  ```
+
 ### Linux记住git密码
 
 1. 在`~/`下， touch创建文件 `.git-credentials`, 用vim编辑此文件，输入：
