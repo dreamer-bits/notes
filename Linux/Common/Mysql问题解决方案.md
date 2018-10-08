@@ -32,3 +32,9 @@ FLUSH PRIVILEGES;
 
 > 可能会出现语句执行后远程连接不生效，重启服务器后可以生效。
 
+##### 创建用户
+
+```shell
+CREATE USER '用户名'@'%' IDENTIFIED BY '密码';
+```
+
