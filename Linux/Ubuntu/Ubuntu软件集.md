@@ -62,3 +62,14 @@ rm -r ~/.wine
 sudo apt-get autoremove
 ```
 
+### nsenter工具安装
+
+```shell
+cd /tmp 
+curl https://www.kernel.org/pub/linux/utils/util-linux/v2.25/util-linux-2.25.tar.gz
+tar -zxfv cd util-linux-2.25;
+sudo apt-get install autopoint autoconf libtool automake
+./configure --without-python --disable-all-programs --enable-nsenter --without-ncurses
+make nsenter; sudo cp nsenter /usr/local/bin
+```
+
