@@ -48,11 +48,22 @@
    在末尾添加如下代码：
 
 ```shell
+[groups]
+# harry_and_sally = harry,sally
+# harry_sally_and_joe = harry,sally,&joe
+dev=xxx
+
+# [/foo/bar]
+# harry = rw
+# &joe = r
+# * =
+
+# [repository:/baz/fuz]
+# @harry_and_sally = rw
+# * = r
+
 [/]
-
-dan=rw
-
-w=r
+@dev=rw
 ```
 
 ​	意思是版本库的根目录dan对其有读写权限，w只有读权限。

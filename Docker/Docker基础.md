@@ -28,20 +28,22 @@
 
 - 运行容器：`docker run 镜像名称 容器执行的命令`
 
-- 运行容器时起名：`docker --name 容器名 镜像名`
+- 运行容器时起名：`docker run --name 容器名 镜像名`
 
-- 以守护进程形式运行docker：`docker -d --name 容器名 镜像名`
+- 以守护进程形式运行docker：`docker run -d --name 容器名 镜像名`
 
 - 关闭容器：`docker stop 容器id`
 
 - 删除容器：`docker rm -f 容器id`
 
-- 进入容器：`docker -it 镜像名称`
+- 运行并进入容器：`docker run -it 镜像名称`
 
-- 进入已退出的容器：
+- 进入已运行的容器：`docker attach 容器名`
+
+- 进入容器（主要方式）：
 
   ```shell
-  #进入已退出的容器的方法是使用Linux自带的强制访问进程空间的命令，在Docker中未删除的容器即使已退出了也是在系统中处于运行的状态
+  #有部分容器进入后无法展示终端，要进入此类型的方法是使用Linux自带的强制访问进程空间的命令，在Docker中未删除的容器即使已退出了也是在系统中处于运行的状态
   
   #获取docker容器的pid
   docker inspect --format "{{.State.Pid}}" 容器名
@@ -49,4 +51,23 @@
   nsenter --target 进程Pid --mount --uts --ipc --net --pid
   ```
 
+  > 脚本封装：
+
+  ```shell
+  #!/bin/bash
+  
+  CNAME=$1
+  CPID=${docker inspect --format "{{.State.Pid}}" $CNAME}
+  nsenter --target "$CPID" --mount --uts --ipc --net --pid
+  ```
+
 - 查看容器运行情况：`docker ps -a`
+
+- 运行容器时将容器的端口随机映射到系统端口：`docker run -P 镜像名`
+
+- 运行容器时将容器的端口映射到指定系统端口：
+
+  - `docker run -p 系统端口:容器端口 系统端口:容器端口... 镜像名`
+  - `docker run -p ip:系统端口:容器端口 镜像名`
+  - `docker run -p ip::容器端口 镜像名`
+
