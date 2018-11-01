@@ -101,6 +101,8 @@
 
 - 因回滚导致`commit`日志丢失，可查看回滚记录：`git reflog`
 
+- 回滚本地`commit`：`git reset HEAD~`
+
 - 强制提交：`git push -f origin 分支`
 
 - 强制拉取，并覆盖本地文件：
