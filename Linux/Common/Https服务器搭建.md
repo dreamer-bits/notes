@@ -65,5 +65,35 @@
 
 9. 执行：`lnmp reload`
 
-### 自己生成证书
+### Https访问经常失败解决方案
 
+- 原因：
+
+  > 通过参考网上的资料，发生的原因：开启了net.ipv4.tcp_tw_recycle，在负载均衡只做NAT的情况下，触发了大量的TCP建连失败。
+
+- 解决方案：
+
+  1. 打开`/etc/sysctl.conf`文件
+  2. 在文件最下方添加：`net.ipv4.tcp_timestamps=0`
+
+- 参考资料：
+
+  - 解决方案：
+
+    https://blog.csdn.net/zhuyiquan/article/details/68925707
+
+  - TCP服务端收到syn但是不回复syn ack：
+
+    http://blog.csdn.net/jueshengtianya/article/details/52130667
+
+  - TCP/IP TIME_WAIT状态原理：
+
+    http://elf8848.iteye.com/blog/1739571 
+
+  - 记一次TIME_WAIT网络故障：
+
+    http://dngood.blog.51cto.com/446195/988968/
+
+  - 微信小程序https连接服务器请求经常失败，请求超时：
+
+    https://blog.csdn.net/wkyb608/article/details/79312121
