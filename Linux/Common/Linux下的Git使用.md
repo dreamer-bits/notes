@@ -286,7 +286,7 @@
 
    4. 在Git仓库管理员主目录下生成管理员管理仓库（不需要输密码）：
 
-      `git clone git@127.0.0.1:gitolite-admin`
+      `git clone git@127.0.0.1:gitolite-admin.git`
 
       > 进入仓库后可以看到conf 和keydir 
       >
