@@ -5,29 +5,31 @@
 在用户根目录的`.vimrc`文件中加入如下配置：
 
 ```shell
-"语法高亮显示
+" 语法高亮显示
 syntax enable
 syntax on    
 set background=dark
 set nocompatible
 filetype on
 set number
-"记录历史的行数
+" 记录历史的行数
 set history=1000
 
 set autoindent
 set cindent
 
-"设置C/C++语言的具体缩进方式
+" 设置C/C++语言的具体缩进方式
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
 set smartindent
-set ts=4 "空格数量
-set shiftwidth=4 "自动缩进的宽度
+" 空格数量
+set ts=4
+" 自动缩进的宽度
+set shiftwidth=4
 set showmatch
 set nobackup
-"检测到如下文件格式将tab替换成ts的配置
+" 检测到如下文件格式将tab替换成ts的配置
 if has("autocmd")
-autocmd FileType xml,html,c,h,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,conf,ini set expandtab
+	autocmd FileType xml,html,c,h,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,conf,ini set expandtab
 endif
 
 "just for encode
@@ -35,15 +37,16 @@ set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
 set fileformats=unix
 set encoding=prc
-set hlsearch    "高亮显示所有匹配
+" 高亮显示所有匹配
+set hlsearch
 set splitright
 set splitbelow
 
-"ctags 索引文件 (根据已经生成的索引文件添加即可, 这里我额外添加了 hge 和 curl 的索引文件)
+" ctags 索引文件 (根据已经生成的索引文件添加即可, 这里我额外添加了 hge 和 curl 的索引文件)
 set tags+=~/.vim/systags
 set tags+=/home/nelg/workspace/tags
 
-"加载Vundle配置文件
+" 加载Vundle配置文件
 if filereadable(expand("~/.vim/config/Vundle.vim"))
     source ~/.vim/config/Vundle.vim
 endif
