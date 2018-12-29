@@ -73,3 +73,11 @@ sudo apt-get install autopoint autoconf libtool automake
 make nsenter; sudo cp nsenter /usr/local/bin
 ```
 
+### SecureCRT工具安装
+
+```shell
+#破解
+sudo perl securecrt_linux_crack.pl /usr/bin/SecureCRT
+sudo perl securefx_linux_crack_.pl /usr/bin/SecureFX
+```
+
