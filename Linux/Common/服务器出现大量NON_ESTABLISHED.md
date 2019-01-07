@@ -44,16 +44,16 @@
     - vim /etc/sysctl.conf
 
       ```shell
-      #增加或者修改如下：（修改保存后记得sysctl -p 使之生效）
-      net.ipv4.tcp_syncookies = 1
+      # 增加或者修改如下：（修改保存后记得sysctl -p 使之生效）
       net.ipv4.tcp_fin_timeout = 1
       net.ipv4.tcp_tw_reuse = 1
-      net.ipv4.tcp_max_tw_buckets = 6000
       net.ipv4.tcp_tw_recycle = 1
-      net.ipv4.tcp_syn_retries = 1
       net.ipv4.tcp_synack_retries = 1
-      net.ipv4.tcp_max_syn_backlog = 262144
-      net.core.netdev_max_backlog = 262144
-      net.ipv4.tcp_max_orphans = 262144
       net.ipv4.tcp_keepalive_time = 30
+      # net.ipv4.tcp_syncookies = 1
+      # net.ipv4.tcp_syn_retries = 1
+      # net.ipv4.tcp_max_syn_backlog = 262144
+      # net.core.netdev_max_backlog = 262144
+      # net.ipv4.tcp_max_orphans = 262144
+      # net.ipv4.tcp_max_tw_buckets = 6000
       ```
