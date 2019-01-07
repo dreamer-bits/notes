@@ -18,7 +18,6 @@
   |     thread_cache_size     | 每建立一个连接，都需要一个线程来与之匹配，此参数用来缓存空闲的线程，以至不被销毁，如果线程缓存中有空闲线程，这时候如果建立新连接，MYSQL就会很快的响应连接请求。 | 在配置文件中设置，根据物理内存设置规则如下：  <br />1G  > 8 <br />2G  > 16 <br />3G  > 32 <br />>3G  > 64 |
   |     open_files_limit      | MySQL最大可打开的文件句柄数                                  | 在配置文件中修改                                             |
   |      max_connections      | MySql最大连接数                                              | 在配置文件中修改                                             |
-  |    max_connect_errors     | MySQL最大错误连接数                                          | 在配置文件中修改                                             |
   |  innodb_buffer_pool_size  | 用于缓存 索引 和 数据的内存大小                              | 在配置文件中修改                                             |
 
   
