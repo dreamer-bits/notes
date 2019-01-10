@@ -56,3 +56,8 @@ passwd user1
 - 上传目录到服务器
 
   `scp  -r local_dir username@servername:remote_dir`
+
+### 查看TCP各端口连接状态
+
+- 查看网络状态：`netstat -napo | less`
+- 查看端口占用进程：`netstat -nltp`

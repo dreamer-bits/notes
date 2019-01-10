@@ -57,3 +57,11 @@
       # net.ipv4.tcp_max_orphans = 262144
       # net.ipv4.tcp_max_tw_buckets = 6000
       ```
+
+### 因服务端代码造成Reids半连接数过多
+
+```shell
+net.ipv4.tcp_keepalive_time = 30
+net.ipv4.tcp_max_tw_buckets = 500
+```
+
