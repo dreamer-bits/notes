@@ -16,13 +16,13 @@
 
    ```shell
    #单域名生成证书：
-   ./certbot-auto certonly --email 邮箱地址 --agree-tos --no-eff-email --staging --webroot -w 项目根目录 -d 项目域名
+   ./certbot-auto certonly --email 邮箱地址 --agree-tos --no-eff-email --staging --webroot -w 项目根目录(入口文件目录) -d 项目域名
    
    #多域名单目录生成单证书：(即一个网站多个域名使用同一个证书)
-   ./certbot-auto certonly --email youemail@vpser.net --agree-tos --no-eff-email --staging --webroot -w 项目根目录 -d 项目域名 -d 项目域名
+   ./certbot-auto certonly --email youemail@vpser.net --agree-tos --no-eff-email --staging --webroot -w 项目根目录(入口文件目录) -d 项目域名 -d 项目域名
    
    #多域名多目录生成一个证书：(即一次生成多个域名的一个证书)
-   ./certbot-auto certonly --email  您的email --agree-tos --no-eff-email --staging --webroot -w 项目根目录 -d 项目域名 -d 项目域名 -w 项目根目录 -d 项目域名 -d 项目域名
+   ./certbot-auto certonly --email  您的email --agree-tos --no-eff-email --staging --webroot -w 项目根目录(入口文件目录) -d 项目域名 -d 项目域名 -w 项目根目录(入口文件目录) -d 项目域名 -d 项目域名
    ```
 
    > 生成的证书会存在：`/etc/letsencrypt/live/域名/` 目录下
