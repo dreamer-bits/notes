@@ -42,21 +42,17 @@
 
 - 本地：
 
-  查看分支：`git branch`
-
-  创建分支：`git branch 分支名`
-
-  切换分支：`git checkout 分支名`
-
-  创建+切换分支：`git checkout –b 分支名`
-
-  合并某分支到当前分支：`git merge 分支名`
-
-  删除分支：`git branch –d 分支名`
+  - 查看分支：`git branch`
+  - 创建分支：`git branch 分支名`
+  - 切换分支：`git checkout 分支名`
+  - 创建+切换分支：`git checkout –b 分支名`
+  - 合并某分支到当前分支：`git merge 分支名`
+  - 删除本地分支：`git branch –d 分支名`
+  - 删除本地的远程分支：`git branch -r -D 远程分支名`
 
 - 远程：
 
-  查看分支：`git branch -a` (带remotes前缀的代表是远程分支)
+  - 查看分支：`git branch -a` (带remotes前缀的代表是远程分支)
 
   - 创建分支：
 
@@ -73,19 +69,49 @@
     6. 删除分支：`git push origin :分支名` 
 
        > 注意：分支名前的:和项目别名之间要有空格,分支名和:之间不能有空格
+       >
+       > 若在合并分支的过程中不小心停止了合并过程使用`git merge --abort`回滚
 
   - 添加文件：
 
-    - git add dir/files的方式添加文件
-    - git add .  添加根目录下所有项目上没有的文件(注意不要漏掉点号)
+    1. 添加指定目录或文件：`git add dir/files` 
+    2. 添加根目录下所有项目上没有的文件(注意不要漏掉点号)：`git add .`  
 
-  - 更新分支：
+  - 更新分支：`git fetch`
 
-    - git fetch
+  - 切换远程分支：`git checkout -b 本地分支名 remotes/origin/dev（需要关联的远程分支）`
 
-  - 切换远程分支：
+  - 删除远程分支：`git push origin -d 远程分支名`
 
-    - git checkout -b 本地分支名 remotes/origin/dev（需要关联的远程分支）
+### Git操作
+
+- 查看日志：`git log`
+
+- 查看`commit`提交记录详情：
+
+  - 含文件修改记录详情：`git show <commit_id>`
+  - 仅显示修改文件列表：`git show --stat <commit_id>`
+
+- 查看本地修改记录详情：
+
+  - 含文件修改记录详情：`git diff <目录路径>`
+  - 仅显示修改文件列表：`git diff --stat <目录路径>`
+
+- 回滚到某个`commit`记录上：`git reset --hard <commit_id>` 
+
+- 因回滚导致`commit`日志丢失，可查看回滚记录：`git reflog`
+
+- 回滚本地`commit`：`git reset HEAD~`
+
+- 强制提交：`git push -f origin 分支`
+
+- 强制拉取，并覆盖本地文件：
+
+  ```shell
+  git fetch --all  
+  git reset --hard origin/master 
+  git pull
+  ```
 
 ### Linux记住git密码
 
@@ -114,21 +140,21 @@
   >
   > 比如，a用户把文件改名为a.c，b用户把同一个文件改名为b.c，那么b将这两个commit合并时，会产生冲突。
 
-```shell
-#查看冲突
-git status
-#删除指定文件
-git rm 文件名
-#添加指定文件
-git add 文件名
-#提交代码
-git commit -am "提交说明"
-```
+  ```shell
+  #查看冲突
+  git status
+  #删除指定文件
+  git rm 文件名
+  #添加指定文件
+  git add 文件名
+  #提交代码
+  git commit -am "提交说明"
+  ```
 
-> 执行前面两个git rm时，会告警“file-name : needs merge”，可以不必理会。
->
-> 树冲突也可以用`git mergetool`来解决，但整个解决过程是在交互式问答中完成的，用d 删除不要的文件，用c保留需要的文件。
-> 最后执行`git commit`提交即可。
+  > 执行前面两个git rm时，会告警“file-name : needs merge”，可以不必理会。
+  >
+  > 树冲突也可以用`git mergetool`来解决，但整个解决过程是在交互式问答中完成的，用d 删除不要的文件，用c保留需要的文件。
+  > 最后执行`git commit`提交即可。
 
 - 代码冲突
 
@@ -142,7 +168,7 @@ git commit -am "提交说明"
   >>>>
   ```
 
-  删除不需要的代码和标记，使用`git commit-am "提交说明"`即可
+  > 删除不需要的代码和标记，使用`git commit-am "提交说明"`即可
 
 ### Git使用ssh登录
 
@@ -204,28 +230,28 @@ git commit -am "提交说明"
 
 ### 代理设置和取消
 
-##### 设置：
+- 设置：
 
-```shell
-//设置git的http代理方式，http
-git config --global https.proxy http://127.0.0.1:1080
-//设置git的https方式，https
-git config --global https.proxy https://127.0.0.1:1080
+  ```shell
+  //设置git的http代理方式，http
+  git config --global https.proxy http://127.0.0.1:1080
+  //设置git的https方式，https
+  git config --global https.proxy https://127.0.0.1:1080
+  
+  //设置git的http方式，socks5
+  git config --global http.proxy 'socks5://127.0.0.1:1080'
+  //设置git的https方式，socks5
+  git config --global https.proxy 'socks5://127.0.0.1:1080'
+  ```
 
-//设置git的http方式，socks5
-git config --global http.proxy 'socks5://127.0.0.1:1080'
-//设置git的https方式，socks5
-git config --global https.proxy 'socks5://127.0.0.1:1080'
-```
+- 取消：
 
-##### 取消：
-
-```shell
-//取消git的http代理
-git config --global --unset http.proxy
-//取消git的https代理
-git config --global --unset https.proxy
-```
+  ```shell
+  //取消git的http代理
+  git config --global --unset http.proxy
+  //取消git的https代理
+  git config --global --unset https.proxy
+  ```
 
 ### 搭建可控制权限的Git仓库
 
@@ -260,7 +286,7 @@ git config --global --unset https.proxy
 
    4. 在Git仓库管理员主目录下生成管理员管理仓库（不需要输密码）：
 
-      `git clone git@127.0.0.1:gitolite-admin`
+      `git clone git@127.0.0.1:gitolite-admin.git`
 
       > 进入仓库后可以看到conf 和keydir 
       >
@@ -277,7 +303,7 @@ git config --global --unset https.proxy
       ```shell
       ###定义用户组
       @admin = admin
-      @user = tao wjwen song
+      @user = admin nelg
       
       ###git管理员仓库
       repo gitolite-admin
@@ -286,9 +312,6 @@ git config --global --unset https.proxy
       ###git项目
       repo testing
           RW+     =   @all
-      
-      repo nuode
-          RW+     =   @user
       ```
 
       > 可添加多个用户组，格式：@用户组名 = 用户1 用户2 用户3
@@ -326,3 +349,32 @@ git config --global --unset https.proxy
       2. 提交完修改后，在`~/repositories/`目录下会多出刚刚添加的项目仓库，此时已创建成功，可以给项目成员使用。
 
       3. git的克隆地址为：git clone Git仓库管理员账号名@服务器ip地址:项目仓库名.git
+
+### CentOS安装最新版本Git
+
+- 下载最新版的git：`wget https://www.kernel.org/pub/software/scm/git/git-2.7.3.tar.gz`
+
+- 解压：`tar xzf git-2.7.0.tar.gz`
+
+- 安装：
+
+  ```shell
+  cd git-2.7.0
+  #正常编译
+  make prefix=/usr/local/git all
+  make prefix=/usr/local/git install
+  echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/bashrc
+  source /etc/bashrc
+  #在centos中有可能会兼容不了iconv库，可使用以下命令编译
+  ./configure --without-iconv
+  make CFLAGS=-liconv prefix=/usr/local/git all
+  make CFLAGS=-liconv prefix=/usr/local/git install
+  
+  #设置全局变量
+  echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/bashrc
+  source /etc/bashrc
+  
+  #自动补全
+  ```
+
+  

@@ -25,10 +25,16 @@ sql_mode = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO
 ##### 远程连接被拒绝，开启远程连接
 
 ```shell
-grant all privileges on . to '用户名'@'%' identified by '密码' with grant option;
+GRANT ALL PRIVILEGES ON *.* TO '用户名'@'%' IDENTIFIED BY '密码' WITH GRANT OPTION;
 
-flush privileges;
+FLUSH PRIVILEGES;
 ```
 
 > 可能会出现语句执行后远程连接不生效，重启服务器后可以生效。
+
+##### 创建用户
+
+```shell
+CREATE USER '用户名'@'%' IDENTIFIED BY '密码';
+```
 

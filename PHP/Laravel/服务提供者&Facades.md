@@ -88,7 +88,7 @@ class AppServiceProvider extends ServiceProvider {
 
 6. 使用Facade
 
-6. 经过前面的步骤后，可以使用Test这个Facade了，如下示例是在控制器中使用Facade的方式。
+7. 经过前面的步骤后，可以使用Test这个Facade了，如下示例是在控制器中使用Facade的方式。
 
 ```c
 <?php
