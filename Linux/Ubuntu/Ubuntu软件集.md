@@ -81,3 +81,11 @@ sudo perl securecrt_linux_crack.pl /usr/bin/SecureCRT
 sudo perl securefx_linux_crack_.pl /usr/bin/SecureFX
 ```
 
+### 实时网速、CPU使用率显示
+
+```shell
+sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor && \
+sudo apt-get update && \
+sudo apt-get install indicator-sysmonitor
+```
+
