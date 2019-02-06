@@ -1,21 +1,11 @@
 # Docker基础
 
-### 安装
+### Ubuntu安装
 
-1. 安装docker：`sudo apt-get docker-ce`
+1. 安装docker：`wget -qO- https://get.docker.com/ | sh`
 
-2. 在常规情况下docker只能使用超级管理员运行，若需要普通用户需要需要更改普通用户的用户组：
+2. 当要以非root用户可以直接运行docker时，需要执行`sudo usermod -aG docker 用户名`命令，然后重新登陆，否则会有报错。
 
-   ```shell
-   #1.首先创建docker用户组，如果docker用户组存在可以忽略
-   sudo groupadd docker
-   #2.把用户添加进docker组中
-   gpasswd -a 用户名 docker
-   #3.重启 docker
-   service docker restart
-   #4.如果普通用户执行docker命令，如果提示get …… dial unix /var/run/docker.sock权限不够，则修改/var/run/docker.sock权限 使用root用户执行如下命令，即可
-   sudo chmod a+rw /var/run/docker.sock
-   ```
 
 ### Dokcer命令
 
@@ -74,4 +64,8 @@
 - 运行容器时创建容器数据卷并映射到系统指定位置：
 
   - `docker run -v 系统目录:容器卷目录 镜像名`
+
+### Dokcer-compose安装
+
+- [教程地址](http://www.dockerinfo.net/4257.html)
 

@@ -112,14 +112,11 @@ sudo ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 22 要拒绝所有�
 
  可以允许所有RFC1918网络（局域网/无线局域网的）访问这个主机（/8,/16,/12是一种网络分级）：
 
-sudo ufw allow from 10.0.0.0/8
+`sudo ufw allow from 10.0.0.0/8`
 
-sudo ufw allow from 172.16.0.0/12
+`sudo ufw allow from 172.16.0.0/12`
 
-<<<<<<< HEAD
-sudo ufw allow from 192.168.0.0/16
-=======
-sudo ufw allow from 192.168.0.0/16
+`sudo ufw allow from 192.168.0.0/16`
 
 ### Iptables
 
@@ -141,6 +138,3 @@ sudo ufw allow from 192.168.0.0/16
   iptables -P FORWARD ACCEPT
   modprobe -r ip_tables
   ```
-
-- 
->>>>>>> a7de9997cc52b147a51a5db78db3c4a9dfd8e7e0
