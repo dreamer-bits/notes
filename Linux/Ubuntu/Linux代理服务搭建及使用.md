@@ -2,29 +2,19 @@
 
 ### Linux设置全局代理
 
-1. 安装shadowsocks
+1. 安装`shadowsocket-qt5`:
 
-   1. `sudo apt-get install python-pip`
-   2. `sudo pip install shadowsocks`
+   1. `sudo add-apt-repository ppa:hzwhuang/ss-qt5`
 
-2. 创建配置文件`shadowsocks.json`
+      > 注：因ppa:hzwhuang/ss-qt5 并没有Ubuntu18.04版本的源，修改`/etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-bionic.list`文件，将
+      >
+      > `bionic`（18.04版本代号）改成`xenial`（16.04版本代号） 
 
-   ```shell
-   {
-   	"server": "xxxx.com",	#能翻墙的服务器代理
-   	"server_port": 52239,	#翻墙服务器的端口
-   	"local_address": "127.0.0.1",	#本地地址
-   	"local_port": 1080,		#本地代理端口
-   	"password": "SOME_PASSWORD",	#翻墙服务器设置socks5的密码
-   	"timeout": 600,			#翻墙服务器超时时间
-   	"method": "aes-256-cfb",
-   	"fast_open": false
-   }
-   ```
+   2. `sudo apt-get update`
 
-3. 启动shadowsocks：`nohup sslocal -c shadowsocks.json &`
+   3. `sudo apt-get install shadowsocks-qt5`
 
-4. 安装polipo，进行二次转发
+2. 安装polipo，进行二次转发
 
    > shadowsocks使用socks5协议通信，需搭配浏览器插件使用，若想要在系统全局使用，可使用polipo进行二次转发
 
@@ -34,7 +24,7 @@
    4. `make all`
    5. `sudo make install`
 
-5. 编辑配置文件，保存到`/etc/polipo/config`
+3. 编辑配置文件，保存到`/etc/polipo/config`
 
    ```shell
    # This file only needs to list configuration variables that deviate
@@ -48,9 +38,9 @@
    socksProxyType = socks5
    ```
 
-6. 重启polipo服务：`sudo service polipo restart`
+4. 重启polipo服务：`sudo service polipo restart`
 
-7. 设置环境变量（可添加至~/.bashrc文件中使所有shell均可实现全局SOCKS5访问）
+5. 设置环境变量（可添加至~/.bashrc文件中使所有shell均可实现全局SOCKS5访问）
 
    ```shell
    export http_proxy="http://127.0.0.1:8123"	#8123是polipo的默认端口
