@@ -100,3 +100,15 @@
      2. `rpm2cpio python-rhsm-certificates-1.19.10-1.el7_4.x86_64.rpm | cpio -iv --to-stdout ./etc/rhsm/ca/redhat-uep.pem | tee /etc/rhsm/ca/redhat-uep.pem`
 
         > 前两个命令会生成/etc/rhsm/ca/redhat-uep.pem文件
+
+- CentOS7无法通过指定端口访问kubernetes内部pod的解决方案：
+
+  > 因为docker默认使用iptables的过滤规则，因此即使没有启动iptables也因iptables预设好的规则导致docker暴露的端口无法访问（firewalld防火墙的底层也是通过iptables实现）。因此需要增加iptables规则或者增加firewalld规则
+
+  - 增加firewalld规则：
+    - 先开启firewalld：`systemctl start firewalld`
+    - 添加端口访问权限：`firewall-cmd --zone=public --add-port=30001/tcp --permanent`
+    - 关闭firewalld：`systemctl stop firewalld`
+    - 禁止开启启动：`systemctl disable firewalld`
+    - 查看所有打开的端口：`firewall-cmd --zone=public --list-ports`
+    - 删除端口访问权限：`firewall-cmd --zone=public --remove-port=30001/tcp --permanent`
