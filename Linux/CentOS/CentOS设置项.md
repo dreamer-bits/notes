@@ -51,7 +51,7 @@
      > 修改/etc/selinux/config 文件
      > 将SELINUX=enforcing改为SELINUX=disabled
 
-### 关闭iptables防火墙
+### 关闭IPtables防火墙
 
 - Linux防火墙(Iptables)重启系统生效
 
@@ -84,5 +84,25 @@
 
 ### 安装ftp
 
-- yum install vsftpd
+- `yum install vsftpd`
 
+### 手动添加swap分区
+
+1. 使用下面的命令创建2G的空间：
+
+   `dd if=/dev/zero of=/var/swap bs=1024 count=2048000`
+
+   > if 表示infile，of表示outfile，bs=1024代表增加的模块大小，count=2048000代表2048000个模块，也就是2G空间（？迷之算法）
+
+2. 将目的文件设置为swap分区文件：`mkswap /var/swap`
+
+3. 激活swap，立即启用交换分区文件：`swapon /var/swap`
+
+4. 赋权限：`chmod -R 0600 /var/swap`
+
+5. 将上述的临时swap分区变成永久，修改文件`/etc/fstab`：
+
+   ```shell
+   #最后一行添加
+   /var/swap swap swap defaults 0 0
+   ```
