@@ -83,9 +83,11 @@
 
 ### 基础命令
 
-- 获取`pod`错误描述：`kubectl describe pod pod名称`
+- 获取`pod`状态描述：`kubectl describe pod pod名称`
+
 - 删除`rc`：`kubectl delete rc rc名称`
-- 删除`pod`：`kubectl delete pod pod名称`
+
+  >  `rc`、`svc`均与上述命令类似。
 
 ### 异常处理
 
