@@ -89,6 +89,8 @@
 
   >  `rc`、`svc`均与上述命令类似。
 
+- 缩容/扩容：`kubectl scale rc rc名称 --replicas=3`
+
 ### 异常处理
 
 - `open /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt: no such file or directory`解决方案：
