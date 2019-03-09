@@ -51,31 +51,62 @@
      > 修改/etc/selinux/config 文件
      > 将SELINUX=enforcing改为SELINUX=disabled
 
-### 关闭防火墙（开发方便，正式环境不建议）
+### 关闭IPtables防火墙
 
 - Linux防火墙(Iptables)重启系统生效
 
-  >开启： chkconfig iptables on  
-  >
-  >关闭： chkconfig iptables off 
+  - 开启：`chkconfig iptables on` 
+  - 关闭：`chkconfig iptables off` 
 
 - Linux防火墙(Iptables) 即时生效，重启后失效
 
-  > 开启： service iptables start  
-  >
-  > 关闭： service iptables stop  
+  - 开启：`service iptables start`
+  - 关闭：`service iptables stop`
 
 - 需要说明的是对于Linux下的其它服务都可以用以上命令执行开启和关闭操作。
 
-  > 在开启了Linux防火墙(Iptables)时，做如下设置，开启25和110端口，
-  >
-  > 修改/etc/sysconfig/iptables 文件，添加以下内容：
-  >
-  > -A RH-Firewall-1-INPUT -m state --state NEW -p tcp -m tcp --dport 25 --syn -j ACCEPT
-  >
-  > -A RH-Firewall-1-INPUT -m state --state NEW -p tcp -m tcp --dport 110 --syn -j  ACCEPT 
+  ```shell
+  #在开启了Linux防火墙(Iptables)时，做如下设置，开启25和110端口，
+  #修改/etc/sysconfig/iptables 文件，添加以下内容：
+  
+  -A RH-Firewall-1-INPUT -m state --state NEW -p tcp -m tcp --dport 25 --syn -j ACCEPT
+  -A RH-Firewall-1-INPUT -m state --state NEW -p tcp -m tcp --dport 110 --syn -j  ACCEPT 
+  
+  -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+  -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+  -A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+  ```
+
+### 关闭FireWalld防火墙
+
+- 关闭自启动和停止
+
+  ```shell
+  systemctl disable firewalld
+  systemctl stop firewalld
+  ```
 
 ### 安装ftp
 
-- yum install vsftpd
+- `yum install vsftpd`
 
+### 手动添加swap分区
+
+1. 使用下面的命令创建2G的空间：
+
+   `dd if=/dev/zero of=/var/swap bs=1024 count=2048000`
+
+   > if 表示infile，of表示outfile，bs=1024代表增加的模块大小，count=2048000代表2048000个模块，也就是2G空间（？迷之算法）
+
+2. 将目的文件设置为swap分区文件：`mkswap /var/swap`
+
+3. 激活swap，立即启用交换分区文件：`swapon /var/swap`
+
+4. 赋权限：`chmod -R 0600 /var/swap`
+
+5. 将上述的临时swap分区变成永久，修改文件`/etc/fstab`：
+
+   ```shell
+   #最后一行添加
+   /var/swap swap swap defaults 0 0
+   ```

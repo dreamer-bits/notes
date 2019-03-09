@@ -42,3 +42,4 @@
 9. `cd /usr/local`
 10. `mv liteide liteide.bak`
 11. `mv liteide.bak/build liteide`
+

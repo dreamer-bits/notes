@@ -65,6 +65,46 @@
 
   - `docker run -v 系统目录:容器卷目录 镜像名`
 
+- Docker容器访问宿主机的方法：
+
+  > docker容器访问宿主机端口的方式是使用`--add-host`选项，如：
+  >
+  > ```shell
+  > docker run -d --add-host dockerhost:192.168.10.21  --name myapp  -p 6020:6020 -dit myapp
+  > ```
+  >
+  > 在docker容器内使用dockerhost相当于访问192.168.10.21，因此docker容器访问宿主机可使用以下方式：
+
+  - 首先获取当前的IP：
+
+    ```shell
+    export DOCKERHOST=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)
+    ```
+
+  - 在启动docker容器的是时候用以下方式：
+
+    ```shell
+    docker run -d --add-host dockerhost:$DOCKERHOST --name myapp -p 6020:6020 -dit myapp
+    ```
+
+  - 若是使用`docker-compose`管理工具，可在容器启动项中添加`extra_hosts`项，如：
+
+    ```shell
+    version: '3.1'
+    
+    services:                                                                       
+      consignment-service:                                                          
+        build: ./consignment-service                                                
+        ports:                                                                      
+          - "50051:50051"                                                           
+        extra_hosts:                                                                
+          - "dockerhost:$DOCKERHOST"                                                
+        environment:                                                                
+          MICRO_ADRESS: ":50051"                                                    
+          MICRO_REGISTRY: "mdns"                                                    
+          DB_HOST: "dockerhost:27017"
+    ```
+
 ### Dokcer-compose安装
 
 - [教程地址](http://www.dockerinfo.net/4257.html)
