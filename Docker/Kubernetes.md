@@ -81,6 +81,14 @@
        systemctl stop etcd
        ```
 
+- #### Ubuntu
+
+  > 由于`Kubernetes`是由Go语言编写的，所以不需要外部的依赖库，因此我们可以直接从Github下载已经编译好的二进制文件直接打开使用。
+
+  - 在Github中的releases中的tar文件并不是直接编译好的二进制文件，需要从`CHANGELOG-1.13.md`中的连接点击进去下载对于的`master`、`node`、`client`文件（有点尴尬，因为直接下载的tar文件应该是下载器，但是不会用哈哈），下载自己需要的二进制文件后解压然后软连接到`/usr/local/bin`文件夹中即可使用。
+  - 因为`kubernetes`依赖于`etcd`数据库运行，因此我们需要从Github中下载`etcd`二进制文件。同样的因为`etcd`也是使用Go编写的，不用担心依赖库的问题。
+    - 下载`etcd`并将`etcd`和`etcdctl`复制到`/usr/local/bin`文件夹中。
+
 ### 基础命令
 
 - 获取`pod`状态描述：`kubectl describe pod pod名称`
