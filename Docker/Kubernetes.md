@@ -1,5 +1,7 @@
 # Kubernetes
 
+---
+
 ### 安装
 
 - #### Centos

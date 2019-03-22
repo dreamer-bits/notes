@@ -1,5 +1,7 @@
 # Cursesw库
 
+---
+
 ### 安装方式
 
 1. sudo apt-get install libncursesw5

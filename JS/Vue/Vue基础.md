@@ -1,5 +1,7 @@
 # Vue基础语法
 
+---
+
 ### 生命周期
 
 ![](./images/lifecycle.png)

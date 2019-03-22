@@ -1,5 +1,7 @@
 # Linux使用代理服务
 
+---
+
 ### Linux设置全局代理
 
 1. 安装`shadowsocket-qt5`:

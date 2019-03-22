@@ -1,5 +1,7 @@
 # Docker基础
 
+---
+
 ### Ubuntu安装
 
 1. 安装docker：`wget -qO- https://get.docker.com/ | sh`

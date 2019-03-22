@@ -1,5 +1,7 @@
 # Go环境搭建
 
+---
+
 ### Go语言安装
 
 1. [下载Go语言软件](https://golang.google.cn/dl/)

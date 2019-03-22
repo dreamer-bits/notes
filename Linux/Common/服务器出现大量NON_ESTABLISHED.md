@@ -1,5 +1,7 @@
 # 服务器出现大量NON_ESTABLISHED
 
+---
+
  ### 何为syn flood攻击
 
 >  SYN Flood是一种广为人知的DoS（[拒绝服务攻击](https://link.zhihu.com/?target=http%3A//baike.baidu.com/view/21950.htm)）是DDoS（[分布式拒绝服务攻击](https://link.zhihu.com/?target=http%3A//baike.baidu.com/view/210076.htm)）的方式之一，这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，从而使得被攻击方资源耗尽（CPU满负荷或[内存不足](https://link.zhihu.com/?target=http%3A//baike.baidu.com/view/2480679.htm)）的攻击方式（TCP协议的缺陷，所以没办法根除，除非重做TCP协议，目前不可能）。

@@ -1,5 +1,7 @@
 # Dockerfile
 
+---
+
 - FROM：基础镜像
 - MAINTAINER：维护者信息
 - RUN：把命令前面加上RUN

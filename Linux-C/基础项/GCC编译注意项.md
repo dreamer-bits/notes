@@ -1,5 +1,7 @@
 # GCC编译注意项
 
+---
+
 如果编译中使用到额外的库则需要加上-L -l选项，如：
 
 `gcc mysql_test.c -o mysql_test -L/usr/lib/mysql -lmysqlclient`

@@ -1,5 +1,7 @@
 # PCB信息详解
 
+---
+
 > task_struct是进程描述符。操作系统通过task_struct感知进程的存在。
 
 ![](./images/1.jpeg?raw=true)

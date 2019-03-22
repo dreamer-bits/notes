@@ -1,5 +1,7 @@
 # ZendStudio常用编辑习惯
 
+---
+
 ### 字体设置
 
 位置：`Windows->Preferences->General->Appearance->Colors and Fonts->Basic->Text Font`

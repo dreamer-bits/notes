@@ -1,5 +1,7 @@
 # Vundle插件管理工具
 
+---
+
 ### 安装Vundle
 
 1. 创建`～/.vim/bundle`目录

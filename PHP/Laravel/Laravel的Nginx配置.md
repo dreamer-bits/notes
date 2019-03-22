@@ -1,5 +1,7 @@
 # Laravel的Nginx配置
 
+---
+
 ### URL重写
 
 在对应的`server`字段添加如下配置：

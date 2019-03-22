@@ -1,5 +1,7 @@
 # Linux C开发环境搭建
 
+---
+
 ### 配置Vim编辑器
 
 > 在UBUNTU中vim的配置文件存放在/etc/vim目录中，配置文件名为vimrc 
