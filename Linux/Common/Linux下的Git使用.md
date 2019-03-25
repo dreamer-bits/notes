@@ -352,6 +352,31 @@
 
       3. git的克隆地址为：git clone Git仓库管理员账号名@服务器ip地址:项目仓库名.git
 
+### Gitolite自动部署
+
+> 在`git`中有名为`hooks`钩子文件夹，里面主要是在进行某种操作之后运行的钩子操作，由于我们的`Git`仓库是用`Gitolite`进行搭建的，因此我们用它来实现代码更新到远程服务器后自动更新的钩子操作。
+
+1. 在`Gitolite`中所有的仓库都在`repositories`中记录，因此我们要将钩子操作写在`repositories/仓库名.git/hooks`目录下。
+
+2. 远程接收到团队人员的`push`操作后执行的`post-receive`钩子操作，以下钩子通过是`shell`脚本实现的，实现了接收到`test`分支的提交后更新本地服务器的代码。
+
+   ```shell
+   #!/bin/sh
+   
+   DIR_PATH=项目代码路径
+   # post-receive钩子接收三个参数：旧版本号、新版本号、分支名称
+   while read oldrev newrev ref
+   do
+       if [[ $ref =~ .*/test$ ]];then
+           unset GIT_DIR
+           cd $DIR_PATH
+           git stash
+           git pull
+           git stash pop
+       fi
+   done
+   ```
+
 ### CentOS安装最新版本Git
 
 - 下载最新版的git：`wget https://www.kernel.org/pub/software/scm/git/git-2.7.3.tar.gz`
