@@ -45,5 +45,15 @@
 ### Redis基本操作
 
 - 选择数据库：`select index`
+
 - 清空所有数据库数据：`flushall`
+
 - 清空当前数据库数据：`flushdb`
+
+- 模糊匹配删除`KEY`：`./redis-cli -n 3 keys "key_name*" | xargs ./redis-cli -n 3 del`
+
+  > - `-n`：选项表示选择哪个库
+  > - `key_name`：表示你要模糊匹配的`key`名
+  >
+  > [参考连接](<https://www.cnblogs.com/luotianshuai/p/5421471.html>)
+
