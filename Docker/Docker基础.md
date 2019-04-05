@@ -25,6 +25,9 @@
 }
 ```
 
+### Docker事件处理流程图
+
+![](./images/docker_event.png)
 
 ### Dokcer命令
 
