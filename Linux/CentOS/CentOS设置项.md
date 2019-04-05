@@ -102,9 +102,9 @@
 
 2. 将目的文件设置为swap分区文件：`mkswap /var/swap`
 
-3. 激活swap，立即启用交换分区文件：`swapon /var/swap`
+3. 赋权限：`chmod -R 0600 /var/swap`
 
-4. 赋权限：`chmod -R 0600 /var/swap`
+4. 激活swap，立即启用交换分区文件：`swapon /var/swap`
 
 5. 将上述的临时swap分区变成永久，修改文件`/etc/fstab`：
 
