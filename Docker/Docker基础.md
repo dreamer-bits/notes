@@ -55,26 +55,53 @@
 
 ![](./images/docker_event.png)
 
-### Dokcer命令
+### Docker命令类型
 
-- 搜索镜像：`docker search 镜像名`
-- 拉取从仓库镜像：`docker pull 镜像名`
-- 查看系统镜像：`docker images`
-- 删除镜像：`docer rmi 镜像id`
+> - `Docker`命令分`Docker管理命令`和`Docker对象命令`，如：
+>   - 管理命令：
+>     - `docker info`（获取`Docker`信息）
+>     - .....
+>   - 对象命令：
+>     - `docker image`（管理`Docker`镜像）
+>     - `docker container`（管理`Docker`容器）
+>
+> - 所有命令可使用`docker help`查看，管理命令是初始版本`Docker`为了方便操作的命令模式，后续为了清晰区分命令的作用产生了对象命令，部分管理命令在后续的版本中可能被移除。
+>
+> - 使用`docker 对象 -h`可查看管理该对象的所有命令选项。
+
+### Docker镜像命令
+
+- 搜索镜像：`docker image search 镜像名`
+
+- 拉取从仓库镜像：`docker image pull 域名:端口/命名空间/镜像名:版本号`
+
+  > 命名空间主要代表了组织或用户或角色的作用。通常顶级镜像（官方的、公认的）没有命名空间，如
+  >
+  > `docker image pull dockerhub.com:443/google/nginx`（组织）
+  >
+  > `docker image pull dockerhub.com:443/nelg/nginx`（用户）
+  >
+  > `docker image pull dockerhub.com:443/test/nginx`（角色）
+  >
+  > 其中`dockerhub.com:443`可忽略，因为`Docker`默认使用`dockerhub.com`中的镜像和`https`的443端口。
+
+- 查看系统镜像：`docker image ls`
+
+- 删除镜像：`docer image rm 镜像id`
 
 ### Docker 容器命令
 
-- 运行容器：`docker run 镜像名称 容器执行的命令`
+- 运行容器：`docker container run 镜像名称 容器执行的命令`
 
-- 运行容器时起名：`docker run --name 容器名 镜像名`
+- 运行容器时起名：`docker container run --name 容器名 镜像名`
 
-- 以守护进程形式运行docker：`docker run -d --name 容器名 镜像名`
+- 以守护进程形式运行docker：`docker container run -d 容器名 镜像名`
 
-- 关闭容器：`docker stop 容器id`
+- 关闭容器：`docker container stop 容器id`
 
-- 删除容器：`docker rm -f 容器id`
+- 删除容器：`docker container rm -f 容器id`
 
-- 运行并进入容器：`docker run -it 镜像名称`
+- 运行并进入容器：`docker container run -it 镜像名称`
 
 - 进入已运行的容器：`docker attach 容器名`
 
@@ -99,19 +126,19 @@
   nsenter --target "$CPID" --mount --uts --ipc --net --pid
   ```
 
-- 查看容器运行情况：`docker ps -a`
+- 查看容器运行情况：`docker container ps -a`
 
-- 运行容器时将容器的端口随机映射到系统端口：`docker run -P 镜像名`
+- 运行容器时将容器的端口随机映射到系统端口：`docker container run -P 镜像名`
 
 - 运行容器时将容器的端口映射到指定系统端口：
 
-  - `docker run -p 系统端口:容器端口 系统端口:容器端口... 镜像名`
-  - `docker run -p ip:系统端口:容器端口 镜像名`
-  - `docker run -p ip::容器端口 镜像名`
+  - `docker container run -p 系统端口:容器端口 系统端口:容器端口... 镜像名`
+  - `docker container run -p ip:系统端口:容器端口 镜像名`
+  - `docker container run -p ip::容器端口 镜像名`
 
 - 运行容器时创建容器数据卷并映射到系统指定位置：
 
-  - `docker run -v 系统目录:容器卷目录 镜像名`
+  - `docker container run -v 系统目录:容器卷目录 镜像名`
 
 - Docker容器访问宿主机的方法：
 
