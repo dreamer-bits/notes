@@ -55,6 +55,26 @@
 
 ![](./images/docker_event.png)
 
+### Docker网络模式
+
+![](./images/docker_network_mode.png)
+
+- `Host`模式
+
+  > 宿主机在同一个网络中，但没有独立IP地址。启动容器的时候使用`host`模式，那么这个容器将不会获得一个独立的`Network Namespace`，而是和宿主机共用一个`Network Namespace`。容器将不会虚拟出自己的网卡，配置自己的IP等，而是使用宿主机的IP和端口。
+
+- `Container`模式
+
+  > 指定新创建的容器和已经存在的一个容器共享一个`Network Namespace`，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的IP，而是和一个指定的容器共享IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过lo网卡设备通信。
+
+- `None`模式
+
+  > 该模式将容器放置在它自己的网络栈中，但是并不进行任何配置。实际上，该模式关闭了容器的网络功能，在以下两种情况下是有用的：容器并不需要网络（例如只需要写磁盘卷的批处理任务）。
+
+- `Bridge`模式
+
+  > 容器使用独立`Network Namespace`，并连接到`docker0`虚拟网卡（默认模式）。通过`docker0`网桥以及`Iptables nat表`配置与宿主机通信；bridge模式是Docker默认的网络设置，此模式会为每一个容器分配`Network Namespace`、设置IP等，并将一个主机上的Docker容器连接到一个虚拟网桥上
+
 ### Docker命令类型
 
 > - `Docker`命令分`Docker管理命令`和`Docker对象命令`，如：
