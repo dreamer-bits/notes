@@ -73,7 +73,7 @@
 
 - `Bridge`模式
 
-  > 容器使用独立`Network Namespace`，并连接到`docker0`虚拟网卡（默认模式）。通过`docker0`网桥以及`Iptables nat表`配置与宿主机通信；bridge模式是Docker默认的网络设置，此模式会为每一个容器分配`Network Namespace`、设置IP等，并将一个主机上的Docker容器连接到一个虚拟网桥上
+  > 容器使用独立`Network Namespace`，并连接到`docker0`虚拟网卡（默认模式）。通过`docker0`网桥以及`Iptables nat表`配置与宿主机通信；`bridge`模式是Docker默认的网络设置，此模式会为每一个容器分配`Network Namespace`、设置IP等，并将一个主机上的Docker容器连接到一个虚拟网桥上
 
 ### Docker命令类型
 
