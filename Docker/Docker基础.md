@@ -2,6 +2,39 @@
 
 ---
 
+### 安装
+
+- ##### Ubuntu
+
+  1. 安装docker：`wget -qO- https://get.docker.com/ | sh`
+  2. 当要以非root用户可以直接运行docker时，需要执行`sudo usermod -aG docker 用户名`命令，然后重新登陆，否则会有报错。
+
+- #### CentOS
+
+  1. `yum install -y yum-utils device-mapper-persistent-data lvm2`
+  2. `yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo`
+  3. `yum makecache fast`
+  4. `yum -y install docker-ce`
+  5. `systemctl start docker`
+
+### 命令补全
+
+> 在个别`Linux`系统发行版上无法补全命令子选项，原因是缺少依赖工具`bash-completion`
+
+1. `yum install -y bash-completion`
+2. `source /usr/share/bash-completion/bash_completion`
+3. `source /usr/share/bash-completion/completions/docker`
+
+### 镜像加速
+
+> 配置文件在：`/etc/docker/daemon.json`
+
+```shell
+{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+```
+
 ### Docker容器实现基础
 
 - `Liunx Namespace`
@@ -27,29 +60,6 @@
   > ---
   >
   > 原文：https://blog.csdn.net/songcf_faith/article/details/82787946 
-
-### Ubuntu安装
-
-1. 安装docker：`wget -qO- https://get.docker.com/ | sh`
-2. 当要以非root用户可以直接运行docker时，需要执行`sudo usermod -aG docker 用户名`命令，然后重新登陆，否则会有报错。
-
-### CentOS安装
-
-1. `yum install -y yum-utils device-mapper-persistent-data lvm2`
-2. `yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo`
-3. `yum makecache fast`
-4. `yum -y install docker-ce`
-5. `systemctl start docker`
-
-### 镜像加速
-
-> 配置文件在：`/etc/docker/daemon.json`
-
-```shell
-{
-  "registry-mirrors": ["http://hub-mirror.c.163.com"]
-}
-```
 
 ### Docker事件处理流程图
 
