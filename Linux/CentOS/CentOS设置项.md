@@ -112,25 +112,3 @@
    #最后一行添加
    /var/swap swap swap defaults 0 0
    ```
-
-### 清除`/var/journal`日志
-
-```shell
-journalctl --vacuum-time=2d
-journalctl --vacuum-size=500M
-```
-
-### 修改`journal`日志最大使用容量
-
-1. `vi /etc/systemd/journald.conf`
-
-2. 修改如下选项
-
-   ```shell
-   SystemMaxUse=16M
-   ForwardToSyslog=no
-   ```
-
-3. 重启服务：`systemctl restart systemd-journald.service`
-
-4. 检查日志是否正常：`journalctl --verify`
