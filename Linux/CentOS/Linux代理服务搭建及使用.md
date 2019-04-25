@@ -51,7 +51,7 @@
 
    1. `wget https://www.irif.fr/~jch/software/files/polipo/polipo-20140107.tar.gz`
    2. `tar xvf polipo-20140107.tar.gz`
-   3. `cd polipo-20140107.tar.gz`
+   3. `cd polipo-20140107`
    4. `make all`
    5. `sudo make install`
 
