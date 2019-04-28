@@ -51,3 +51,6 @@
 
   1. `rpm -ql 软件名`
 
+- ##### 导入验证key
+
+  `rpm --import <key.gpg>`
