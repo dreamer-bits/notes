@@ -54,3 +54,40 @@ journalctl --vacuum-size=500M
 ##### 导入验证key
 
 `rpm --import <key.gpg>`
+
+##### Nat转发
+
+1. 开启内核转发
+
+   ```shell
+   # vi /etc/sysctl.conf
+   net.ipv4.ip_forward=1
+   
+   # 保存后，使修改内容生效
+   sysctl -p
+   ```
+
+2. 将访问`121.8.210.236`的转向访问`192.168.191.236`
+
+   ```shell
+   iptables -t nat -A OUTPUT -d 121.8.210.236 -j DNAT --to-destination 192.168.191.236
+   ```
+
+   > 可添加`--dport`选项指定端口或端口范围，如：
+   >
+   > `iptables -t nat -A OUTPUT -d 121.8.210.236 --dport 11211:11212 -j DNAT --to-destination 192.168.191.236`
+
+3. 删除`iptables`中的`NAT`转发规则
+
+   ```shell
+   # 使用命令
+   # POSTROUTING是“路由规则”之后的动作
+   # iptables -t nat -vnL POSTROUTING
+   # PREROUTING是“路由规则”之前的动作
+   # iptables -t nat -vnL PREROUTING
+   
+   # 找到iptables规则后删除，以下是删除iptables中第一条PREROUTING路由转发规则
+   iptables -t nat -D PREROUTING 1
+   ```
+
+   
