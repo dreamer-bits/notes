@@ -70,12 +70,15 @@ journalctl --vacuum-size=500M
 2. 将访问`121.8.210.236`的转向访问`192.168.191.236`
 
    ```shell
-   iptables -t nat -A OUTPUT -d 121.8.210.236 -j DNAT --to-destination 192.168.191.236
+   # 在主节点中添加如下iptables规则
+   iptables -t nat -A OUTPUT -d 121.8.210.236 -j DNAT --to 192.168.191.236
+   # 有些服务器会提示转发连接超时，添加如下iptables规则
+   iptables -t nat -I POSTROUTING -o eth0 -s 121.8.210.236 -j MASQUERADE
    ```
 
    > 可添加`--dport`选项指定端口或端口范围，如：
    >
-   > `iptables -t nat -A OUTPUT -d 121.8.210.236 --dport 11211:11212 -j DNAT --to-destination 192.168.191.236`
+   > `iptables -t nat -A OUTPUT -d 121.8.210.236 --dport 11211:11212 -j DNAT --to 192.168.191.236`
 
 3. 删除`iptables`中的`NAT`转发规则
 
