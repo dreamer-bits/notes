@@ -83,14 +83,13 @@ journalctl --vacuum-size=500M
 3. 删除`iptables`中的`NAT`转发规则
 
    ```shell
-   # 使用命令
+   # 使用命令查看各表的iptables规则
    # POSTROUTING是“路由规则”之后的动作
    # iptables -t nat -vnL POSTROUTING
    # PREROUTING是“路由规则”之前的动作
    # iptables -t nat -vnL PREROUTING
+   # iptables -t nat -vnL OUTPUT
    
    # 找到iptables规则后删除，以下是删除iptables中第一条PREROUTING路由转发规则
    iptables -t nat -D PREROUTING 1
    ```
-
-   
