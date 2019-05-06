@@ -2,7 +2,7 @@
 
 ---
 
-### 网络设置
+##### 网络设置
 
 - 在虚拟机上使用桥接模式上网时需要设置桥接模式默认使用的网络适配器；
 
@@ -30,7 +30,7 @@
      * 重启网络：`service network restart`
      * 查看网络状态：`ifconfig`
 
-### 关闭selinux（开发方便，正式环境不建议）
+##### 关闭selinux（开发方便，正式环境不建议）
 
 - 查看SELinux状态：
 
@@ -53,7 +53,7 @@
      > 修改/etc/selinux/config 文件
      > 将SELINUX=enforcing改为SELINUX=disabled
 
-### 关闭IPtables防火墙
+##### 关闭IPtables防火墙
 
 - Linux防火墙(Iptables)重启系统生效
 
@@ -68,8 +68,8 @@
 - 需要说明的是对于Linux下的其它服务都可以用以上命令执行开启和关闭操作。
 
   ```shell
-  #在开启了Linux防火墙(Iptables)时，做如下设置，开启25和110端口，
-  #修改/etc/sysconfig/iptables 文件，添加以下内容：
+  # 在开启了Linux防火墙(Iptables)时，做如下设置，开启25和110端口，
+  # 修改/etc/sysconfig/iptables 文件，添加以下内容：
   
   -A RH-Firewall-1-INPUT -m state --state NEW -p tcp -m tcp --dport 25 --syn -j ACCEPT
   -A RH-Firewall-1-INPUT -m state --state NEW -p tcp -m tcp --dport 110 --syn -j  ACCEPT 
@@ -79,20 +79,20 @@
   -A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
   ```
 
-### 关闭FireWalld防火墙
+##### 关闭FireWalld防火墙
 
-- 关闭自启动和停止
+```shell
+# 关闭自启动
+systemctl disable firewalld
+# 停止
+systemctl stop firewalld
+```
 
-  ```shell
-  systemctl disable firewalld
-  systemctl stop firewalld
-  ```
-
-### 安装ftp
+##### 安装ftp
 
 - `yum install vsftpd`
 
-### 手动添加swap分区
+##### 手动添加swap分区
 
 1. 使用下面的命令创建2G的空间：
 
