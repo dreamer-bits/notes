@@ -26,7 +26,7 @@
 
   - netstat查看端口状态
 
-    - netstat -n | grep "^tcp" | awk '{print $6}' | sort  | uniq -c | sort -n
+    - `netstat -n | grep "^tcp" | awk '{print $6}' | sort  | uniq -c | sort -n`
 
       > - 1 SYN_RECV
       > - 13 FIN_WAIT1
@@ -36,6 +36,10 @@
     - 可以查看当前连接状态的数量，从而进行判断。
 
     - 还有vmstat、sar、等检测命令，网上有使用方法！
+
+  - 查看TIME_WAIT详细信息
+
+    - `netstat -np | grep TIME_WAIT | less`
 
 - Syn Flood 一般的防御：
 
@@ -63,7 +67,18 @@
 ### 因服务端代码造成Reids半连接数过多
 
 ```shell
+# 一个连接需要TCP开始发送keepalive探测数据包之前的空闲时间
 net.ipv4.tcp_keepalive_time = 30
+# 表示系统同时保持TIME_WAIT套接字的最大数量
 net.ipv4.tcp_max_tw_buckets = 500
+
+# 修改系統默认的TIMEOUT时间
+net.ipv4.tcp_fin_timeout = 30
+# 表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；
+net.ipv4.tcp_syncookies = 1
+# 表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；
+net.ipv4.tcp_tw_reuse = 1
+# 表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭。
+net.ipv4.tcp_tw_recycle = 1
 ```
 
