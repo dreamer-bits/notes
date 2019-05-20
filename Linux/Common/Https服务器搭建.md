@@ -2,7 +2,7 @@
 
 ---
 
-### 利用免费证书生成脚本搭建（机构认证）
+### 利用免费证书生成脚本搭建
 
 1. 如果是CentOS 6、7，先执行：`yum install epel-release`
 
@@ -67,7 +67,122 @@
 
 9. 执行：`lnmp reload`
 
-### Https访问经常失败解决方案
+### 使用`Let's Encrypt`脚本生成免费证书（浏览器认证安全）
+
+1. 如果是CentOS 6、7，先执行：`yum install epel-release`
+
+2. `cd /root/` 
+
+3. 下载`Let's Encrypt`：`git clone https://github.com/letsencrypt/letsencrypt`
+
+4. `cd letsencrypt`
+
+5. `./certbot-auto certonly -d <域名> --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory`
+
+   > | 参数                       | 说明                                                         |
+   > | -------------------------- | ------------------------------------------------------------ |
+   > | certonly                   | 表示安装模式，Certbot 有安装模式和验证模式两种类型的插件。   |
+   > | --manual                   | 表示手动安装插件，Certbot 有很多插件，不同的插件都可以申请证书，用户可以根据需要自行选择 |
+   > | -d                         | 为那些主机申请证书，如果是通配符，输入 *.you.cn（可以替换为你自己的一级域名） |
+   > | --preferred-challenges dns | 使用 DNS 方式校验域名所有权                                  |
+   > | --server                   | Let's Encrypt ACME v2 版本使用的服务器不同于 v1 版本，需要显示指定。 |
+
+6. 输入邮箱地址
+
+   ```shell
+   Dependency Installed:
+     dwz.x86_64 0:0.11-3.el7             perl-srpm-macros.noarch 0:1-8.el7             tcl.x86_64 1:8.5.13-8.el7             tix.x86_64 1:8.4.3-12.el7             tk.x86_64 1:8.5.13-6.el7             tkinter.x86_64 0:2.7.5-69.el7_5            
+   
+   Complete!
+   Creating virtual environment...
+   Installing Python packages...
+   Installation succeeded.
+   Saving debug log to /var/log/letsencrypt/letsencrypt.log
+   Plugins selected: Authenticator manual, Installer None
+   Enter email address (used for urgent renewal and security notices) (Enter 'c' to
+   cancel): 123@163.com
+   ```
+
+7. 选择安装配置
+
+   ```shell
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Please read the Terms of Service at
+   https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+   agree in order to register with the ACME server at
+   https://acme-v02.api.letsencrypt.org/directory
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   (A)gree/(C)ancel: A
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Would you be willing to share your email address with the Electronic Frontier
+   Foundation, a founding partner of the Let's Encrypt project and the non-profit
+   organization that develops Certbot? We'd like to send you email about our work
+   encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   (Y)es/(N)o: N
+   Obtaining a new certificate
+   Performing the following challenges:
+   dns-01 challenge for kuaichuangkeji.com
+   
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   NOTE: The IP of this machine will be publicly logged as having requested this
+   certificate. If you're running certbot in manual mode on a machine that is not
+   your server, please ensure you're okay with that.
+   
+   Are you OK with your IP being logged?
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   (Y)es/(N)o: Y
+   ```
+
+   > - 是否同意 Let's Encrypt 协议要求=>需要同意
+   > - 是否分享你的邮箱
+   > - 询问是否对域名和机器（IP）进行绑定=>需要同意
+
+8. 配置`DNS TXT`记录，从而校验域名所有权，也就是判断证书申请者是否有域名的所有权
+
+   ```shell
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Please deploy a DNS TXT record under the name
+   _acme-challenge.域名 with the following value:
+   
+   RYtObhDvEcXewZckknNQkBKIkvwIlbb4PNRel74LNwU
+   
+   Before continuing, verify the record is deployed.
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Press Enter to Continue
+   ```
+
+   > 上面输出要求给 _acme-challenge.you.cn 配置一条 TXT 记录，在没有确认 TXT 记录生效之前不要回车执行，，控制台具体操作如下图所示：
+   >
+   > ![](./images/01.webp)
+
+9. 回车执行
+
+   ```shell
+   IMPORTANT NOTES:
+    - Congratulations! Your certificate and chain have been saved at:
+      /etc/letsencrypt/live/you.cn/fullchain.pem
+      Your key file has been saved at:
+      /etc/letsencrypt/live/you.cn/privkey.pem
+      Your cert will expire on 2019-02-27. To obtain a new or tweaked
+      version of this certificate in the future, simply run certbot-auto
+      again. To non-interactively renew *all* of your certificates, run
+      "certbot-auto renew"
+    - If you like Certbot, please consider supporting our work by:
+   
+      Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+      Donating to EFF:                    https://eff.org/donate-le
+   ```
+
+   > 出现此提示代表配置成功，后续配置与上述免费证书配置一样
+
+10. 证书续签，使用`crontab`定期执行
+
+    `0 */12 * * * certbot renew --quiet --renew-hook "lnmp nginx reload"`
+
+    > 注:证书在到期前30天才会续签成功,但为了确保证书在运行过程中不过期,官方建议每天自动执行续签两次
+
+### HTTPS访问经常失败解决方案
 
 - 原因：
 
@@ -104,7 +219,8 @@
 
 ```shell
 server{
-        listen 443;
+		listen 80;
+        listen 443 ssl;
         server_name https://www.example.com;
         index index.html index.htm index.php default.html default.htm default.php;
         root  /var/www/website/example/;
