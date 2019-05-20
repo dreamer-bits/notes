@@ -1,8 +1,8 @@
-# Https服务器搭建
+# HTTPS服务器搭建
 
 ---
 
-### 利用免费证书生成脚本搭建
+### 免费证书
 
 1. 如果是CentOS 6、7，先执行：`yum install epel-release`
 
@@ -143,7 +143,7 @@
    ```shell
    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    Please deploy a DNS TXT record under the name
-   _acme-challenge.域名 with the following value:
+   _acme-challenge.you.cn with the following value:
    
    RYtObhDvEcXewZckknNQkBKIkvwIlbb4PNRel74LNwU
    
@@ -152,9 +152,11 @@
    Press Enter to Continue
    ```
 
-   > 上面输出要求给 _acme-challenge.you.cn 配置一条 TXT 记录，在没有确认 TXT 记录生效之前不要回车执行，，控制台具体操作如下图所示：
+   > 上面输出要求给` _acme-challenge.you.cn` 配置一条 TXT 记录，在没有确认 TXT 记录生效之前不要回车执行，，控制台具体操作如下图所示：
    >
    > ![](./images/01.webp)
+   >
+   > **注：是新增一条TXT记录，当前域名的解析记录还是要保留**
 
 9. 回车执行
 
