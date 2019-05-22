@@ -1,4 +1,4 @@
-# 编译安装Redis、Redis拓展
+# Redis安装与常用操作
 
 ---
 

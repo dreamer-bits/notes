@@ -59,7 +59,11 @@ passwd user1
 
   `scp  -r local_dir username@servername:remote_dir`
 
-### 查看TCP各端口连接状态
+##### 查看TCP各端口连接状态
 
 - 查看网络状态：`netstat -napo | less`
 - 查看端口占用进程：`netstat -nltp`
+
+##### 创建软连接
+
+- `ln -s <源文件> <目标文件（快捷方式位置）>`
