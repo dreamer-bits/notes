@@ -47,6 +47,8 @@ journalctl --vacuum-size=500M
    enable=1
    ```
 
+3. 更新源：`yum makecache`
+
 ##### 查看RPM软件所安装的目录
 
 `rpm -ql 软件名`
