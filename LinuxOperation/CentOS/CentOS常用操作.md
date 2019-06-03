@@ -95,3 +95,4 @@
    iptables -t nat -D PREROUTING 1
    ```
 
+- 查看`service`文件位置：`systemctl show <服务名称>|grep FragmentPath`
