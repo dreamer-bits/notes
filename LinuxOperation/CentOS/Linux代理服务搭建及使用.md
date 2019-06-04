@@ -105,19 +105,19 @@
 
 10. 设置环境变量（可添加至`/etc/profile`文件中使所有shell均可实现全局SOCKS5访问）
 
-   ```shell
-   export http_proxy="http://127.0.0.1:8123"	#8123是polipo的默认端口
-   export https_proxy="https://127.0.0.1:8123"
-   ```
+  ```shell
+  export http_proxy="http://127.0.0.1:8123"	#8123是polipo的默认端口
+  export https_proxy="https://127.0.0.1:8123"
+  ```
 
-### YUM添加代理服务器
+11. YUM添加代理服务器
 
 ```shell
 vim /etc/yum.conf
 #添加如下项目：　　
 proxy=http://172.16.1.188:8888/
 ```
-### WGET添加代理服务器
+12. WGET添加代理服务器
 
 ```shell
 vim /etc/wgetrc
@@ -126,22 +126,38 @@ https_proxy = http://172.16.1.188:8888/
 http_proxy = http://172.16.1.188:8888/
 ftp_proxy = http://172.16.1.188:8888/
 ```
-### 添加全局代理
+13. 添加全局代理
 
 ```shell
 export http_proxy=http://172.16.1.188:8888
 export https_proxy=http://172.16.1.188:8888
 ```
-### 取消全局代理
+15. 取消全局代理
 
 ```shell
 unset http_proxy
 unset https_proxy
 ```
 
+### Proxychains
 
+> 有一种情况是上面的代理在访问网页的时候可用，但对于一些下载软件上述方式却不可用（如`composer`），可使用`proxychanins`
 
-# Linux搭建代理服务
+1. 安装
+
+   ```shell
+   git clone https://github.com/rofl0r/proxychains-ng.git
+   cd proxychains-ng
+   ./configure
+   sudo make && sudo make install
+   cp ./src/proxychains.conf /etc/proxychains.conf
+   ```
+
+2. 修改配置文件`/etc/proxychains.conf`，将`socks4 127.0.0.1 9095`改为`socks5 <IP地址> <端口号>`
+
+3. 使用：`proxychains <shell命令>`或`proxychains4 <shell命令>`
+
+### Linux搭建代理服务
 
 - 安装Shadowsocks：`pip install shadowsocks`
 
