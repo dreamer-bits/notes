@@ -38,16 +38,17 @@
   ```go
   import "runtime/pprof"
 
-  var cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
-
   func main() {
+    
+    cpuprofile := flag.String("cpuprofile", "", "write cpu profile to file")
     flag.Parse()
+    
     if *cpuprofile != "" {
       f, err := os.Create(*cpuprofile)
       defer pprof.StopCPUProfile()
     }
 
-    for {
+    for i:=0;i<100;i++ {
       Add("test")
     }
   }
