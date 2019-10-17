@@ -59,7 +59,7 @@
 - http方式
   > 若嵌入pprof方式的是使用http包可以直接通过URL方式访问，访问地址：
   `http://localhost:8080/debug/pprof/profile  默认采集需要30秒`
-  `pprof http://localhost:8080/debug/pprof/heap`
+  `http://localhost:8080/debug/pprof/heap`
   `http://localhost:8080/debug/pprof/block`
   `http://localhost:8080/debug/pprof/mutex`
 - 命令行方式
