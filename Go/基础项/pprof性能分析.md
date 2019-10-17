@@ -48,7 +48,7 @@
       defer pprof.StopCPUProfile()
     }
 
-    for i:=0;i<100;i++ {
+    for i := 0; i < 100; i++ {
       Add("test")
     }
   }
