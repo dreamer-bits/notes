@@ -1,5 +1,4 @@
 # pprof性能分析
-
 ---
 ### 添加pprof
 - net/http/pprof包
@@ -53,7 +52,7 @@
     }
   }
   ```
-  > 若需要性能分析的时候需要添加启动参数：`/main -cpuprofile=cpu.prof`
+  > 若需要性能分析的时候启动程序需要添加启动参数：`/main -cpuprofile=cpu.prof`
 ### 生成报告
 > 先运行程序，运行程序后根据自身条件用以下方式生成分析报告
 - http方式
