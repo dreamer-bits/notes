@@ -45,9 +45,10 @@
     
     if *cpuprofile != "" {
       f, err := os.Create(*cpuprofile)
+      pprof.StartCPUProfile(f)
       defer pprof.StopCPUProfile()
-    }
-
+  }
+  
     for i := 0; i < 100; i++ {
       Add("test")
     }
