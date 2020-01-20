@@ -78,7 +78,27 @@ unset http_proxy
 unset https_proxy
 ```
 
+### 使用v2ray代理
 
+1. 安装`v2ray`客户端：
+
+   1. `wget https://install.direct/go.sh`
+
+   2. `sudo ./go.sh`
+
+      > /usr/bin/v2ray/v2ray：V2Ray 程序；
+      >  /usr/bin/v2ray/v2ctl：V2Ray 工具；
+      >  /etc/v2ray/config.json：配置文件；
+      >  /usr/bin/v2ray/geoip.dat：IP 数据文件
+      >  /usr/bin/v2ray/geosite.dat：域名数据文件
+
+2. 配置`v2ray`
+
+   1. `vi /etc/v2ray/config.json`
+
+3. 重启服务
+
+   1. `service v2ray restart`
 
 # Linux搭建代理服务
 
