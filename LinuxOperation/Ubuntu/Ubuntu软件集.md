@@ -91,3 +91,19 @@ sudo apt-get update && \
 sudo apt-get install indicator-sysmonitor
 ```
 
+### RabbitVCS图形软件
+
+> RabbitVCS是SVN、GIT的客户端图形管理工具
+
+```shell
+sudo add-apt-repository ppa:rabbitvcs/ppa
+
+sudo apt-get update
+
+sudo apt-get install python-nautilus python-configobj python-gtk2 python-glade2 python-svn python-dbus python-dulwich subversion meld
+
+sudo apt-get install rabbitvcs-cli rabbitvcs-core rabbitvcs-gedit rabbitvcs-nautilus
+
+nautilus -q
+```
+
