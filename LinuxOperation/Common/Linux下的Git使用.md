@@ -85,6 +85,17 @@
 
   - 删除远程分支：`git push origin -d 远程分支名`
 
+### Tag操作
+
+- 查看所有`tag`：`git tag`
+- 新建`tag`：`git tag -a <tagName> -m '<注释>'`
+- 显示`tag`的具体信息：`git show <tagName>`
+- 推送某个`tag`到远程仓库：`git push origin <tagName>`
+- 推送所有`tag`：`git push origin --tags`
+- 删除本地`tag`：`git tag -d <tagName>`
+- 删除远程标签：`git push origin :refs/tags/<tagName>`
+- 从指定`tag`切出分支：`git checkout tags/<tagName> -b <branchName>`
+
 ### Git操作
 
 - 查看日志：`git log`
