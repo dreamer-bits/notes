@@ -267,7 +267,17 @@ server{
         {
             expires      12h;
         }
-    
+
+        location ~* /(public/|admin/)
+        {
+            allow all;
+        }
+       
+        location ~* /
+        {
+            deny all;
+        }
+	
     	location ~ /.well-known {
             allow all;
     	}
