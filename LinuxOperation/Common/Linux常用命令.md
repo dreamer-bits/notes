@@ -51,6 +51,7 @@
 
   - 查看网络状态：`netstat -napo | less`
   - 查看端口占用进程：`netstat -nltp`
+  - 查看所有连接：`netstat -ant | less`
 
 - 创建软连接：`ln -s <源文件> <目标文件（快捷方式位置）>`
 
