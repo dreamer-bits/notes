@@ -278,6 +278,11 @@ server{
             deny all;
         }
 	
+	location ~* /.* 
+	{
+            deny all;
+        }
+
     	location ~ /.well-known {
             allow all;
     	}
