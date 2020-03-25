@@ -53,5 +53,30 @@
    
 4. `Nginx`命令：
 
-   1. 
+   1. 启动：`/usr/local/nginx/bin/nginx`
+   2. 重载：`/usr/local/nginx/bin/nginx -s reload`
+   3. 停止：`/usr/local/nginx/bin/nginx -s stop`
+   
+5. 添加对`PHP`支持的配置文件：
+
+   1. 在`/usr/local/nginx/conf/`下添加`pathinfo.conf`文件：
+
+      ```shell
+      fastcgi_split_path_info ^(.+?\.php)(/.*$);
+      set $path_info $fastcgi_path_info;
+      fastcgi_param PATH_INFO $path_info;
+      try_files $fastcgi_scrpit_name = 404;
+      ```
+
+   2. 在`/usr/local/nginx/conf/`下添加`enable-php-pathinfo.conf`文件：
+
+      ```shell
+      	location ~ [^/]\.php(/|$)
+      	{
+      	    fastcgi_pass unix:/tmp/php-cgi.sock;
+      	    fastcgi_index index.php;
+      	    include fastcgi.conf;
+      	    include pathinfo.conf;
+      	}
+      ```
 
