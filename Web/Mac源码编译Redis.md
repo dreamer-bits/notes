@@ -26,3 +26,12 @@
 7. `Redis`命令：
    1. 启动：`sudo /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf`
    2. 停止：`sudo /usr/local/redis/bin/redis-cli shutdown`
+8. 编译`PHP`扩展
+   1. [下载扩展](http://pecl.php.net/package/redis)
+   2. 解压后执行以下命令编译安装：
+      1. `/usr/local/php/bin/phpize`
+      2. `./configure --with-php-config=/usr/local/php/bin/php-config`
+      3. `make`
+      4. `sudo make install`
+   3. 添加扩展
+      1. `extension=redis.so`
