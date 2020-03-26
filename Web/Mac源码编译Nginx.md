@@ -65,7 +65,7 @@
       fastcgi_split_path_info ^(.+?\.php)(/.*$);
       set $path_info $fastcgi_path_info;
       fastcgi_param PATH_INFO $path_info;
-      try_files $fastcgi_scrpit_name = 404;
+      try_files $fastcgi_script_name = 404;
       ```
 
    2. 在`/usr/local/nginx/conf/`下添加`enable-php-pathinfo.conf`文件：

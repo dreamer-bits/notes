@@ -68,4 +68,9 @@
       2. 平滑终止：`kill QUIT <pid>`
       3.  重新打开日志文件：`kill USR1 <pid> `
       4. 平滑重载所有worker进程并重新载入配置和二进制模块：`kill USR2 <pid>`
+   
+6. 使用`php-fpm`进行`cgi`通讯的注意点
+
+   1. 若要使用`Unix domain socket`方式进行通讯，需要修改`/usr/local/php/etc/php-fpm.d/www.conf`中的`listen`字段，可修改为`/tmp/php-cgi.sock`，指定有名管道的路径。
+   2. 当使用`Unix domain socket`方式进行通讯并指定有名管道的路径后，需要注意有名管道的读写权限，可以在`listen.mode`字段中修改有名管道权限，推荐修改为`0666`。
 
