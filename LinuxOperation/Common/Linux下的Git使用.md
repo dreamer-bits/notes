@@ -125,6 +125,10 @@
   git reset --hard origin/master 
   git pull
   ```
+  
+- 若仓库中存在其他第三方仓库且第三方仓库的文件无法提交时：
+
+  `git rm --cached <目录路径>`
 
 ### Linux记住git密码
 
