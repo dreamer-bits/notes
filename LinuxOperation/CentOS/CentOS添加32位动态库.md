@@ -11,4 +11,3 @@
 - `yum install glibc.i386`
 - `yum install xulrunner.i386`
 - `yum install libXtst.i386`
-
