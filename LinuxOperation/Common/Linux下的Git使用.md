@@ -132,7 +132,7 @@
   
 - 查看文件修改记录，仅显示日志ID：`git log --pretty=oneline <file_name>`
 
-- 查看文件修改记录：`git log --pretty=oneline <file_name>`
+- 查看文件修改记录：`git log -p <file_name>`
 
 ### Linux记住git密码
 
