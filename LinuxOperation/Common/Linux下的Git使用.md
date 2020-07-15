@@ -50,7 +50,6 @@
   - 创建+切换分支：`git checkout –b 分支名`
   - 合并某分支到当前分支：`git merge 分支名`
   - 删除本地分支：`git branch –d 分支名`
-  - 删除本地的远程分支：`git branch -r -D 远程分支名`
 
 - 远程：
 
