@@ -61,14 +61,14 @@
     1. 先创建本地分支：`git branch 分支名`
 
     2. 把本地新分支推送到远程：`git push origin 分支名`
-
-    3. 切换分支：`git checkout 分支名`
-
-    4. 创建+切换分支：`git checkout –b 分支名`
-
-    5. 合并某分支到当前分支：`git merge 分支名`
     
-       > 若在合并分支的过程中不小心停止了合并过程使用`git merge --abort`回滚
+  - 切换分支：`git checkout 分支名`
+
+  - 创建+切换分支：`git checkout –b 分支名`
+
+  - 合并某分支到当前分支：`git merge 分支名`
+    
+    > 若在合并分支的过程中不小心停止了合并过程使用`git merge --abort`回滚
 
   - 添加文件：
 
