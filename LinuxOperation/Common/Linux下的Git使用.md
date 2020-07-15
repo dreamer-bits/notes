@@ -67,11 +67,7 @@
     4. 创建+切换分支：`git checkout –b 分支名`
 
     5. 合并某分支到当前分支：`git merge 分支名`
-
-    6. 删除分支：`git push origin :分支名` 
-
-       > 注意：分支名前的:和项目别名之间要有空格,分支名和:之间不能有空格
-       >
+    
        > 若在合并分支的过程中不小心停止了合并过程使用`git merge --abort`回滚
 
   - 添加文件：
@@ -83,7 +79,7 @@
 
   - 切换远程分支：`git checkout -b 本地分支名 remotes/origin/dev（需要关联的远程分支）`
 
-  - 删除远程分支：`git push origin -d 远程分支名`
+  - 删除远程分支：`git push origin --delete 远程分支名`
 
 ### Tag操作
 
