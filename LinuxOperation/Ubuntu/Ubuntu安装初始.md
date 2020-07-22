@@ -144,9 +144,6 @@ sudo ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 22 要拒绝所有�
 ### 补充man手册
 
 ```shell
-sudo apt-get install manpages
-sudo apt-get install manpages-dev
-sudo apt-get install manpages-posix
-sudo apt-get install manpages-posix-dev
+sudo apt-get install manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix
 ```
 
