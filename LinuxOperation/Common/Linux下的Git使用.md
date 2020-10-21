@@ -76,7 +76,7 @@
 
   - 更新分支：`git fetch`
 
-  - 切换远程分支：`git checkout -b 本地分支名 remotes/origin/dev（需要关联的远程分支）`
+  - 切换远程分支：`git checkout -b 远程分支名`
 
   - 删除远程分支：`git push origin --delete 远程分支名`
 
