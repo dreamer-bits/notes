@@ -16,6 +16,8 @@ filetype on
 set number
 " 记录历史的行数
 set history=1000
+" 字符长度提示线
+set colorcolumn=80
 
 set autoindent
 set cindent
