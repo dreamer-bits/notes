@@ -23,17 +23,8 @@ set autoindent
 set cindent
 
 " 设置C/C++语言的具体缩进方式
-set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
-set smartindent
-" 空格数量
-set ts=4
-" 自动缩进的宽度
-set shiftwidth=4
-set showmatch
-set nobackup
-" 检测到如下文件格式将tab替换成ts的配置
 if has("autocmd")
-	autocmd FileType xml,html,c,h,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,conf,ini set expandtab
+    autocmd FileType xml,html,c,h,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,conf,ini,s set expandtab | set shiftwidth=4 | set smartindent | set ts=4
 endif
 
 "just for encode
