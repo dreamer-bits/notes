@@ -1,4 +1,4 @@
-#Composer使用
+# Composer使用
 
 ---
 
@@ -33,22 +33,20 @@
 
 ```json
 {
-//设置允许http协议的仓库源
-"config": {
+	//设置允许http协议的仓库源
+	"config": {
     "secure-http": false
-},
-//设置仓库源
-"repositories": [
-                    {
-                            "type": "composer",
-                            "url": "http://120.25.201.201/satis/www"
-                    },
-                    {
-                            "type": "composer",
-                            "url": "https://packagist.phpcomposer.com"
-                    },
-                    {"packagist": false}
-    ]
+	},
+	//设置仓库源
+	"repositories": [
+    {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    },
+    {
+      "packagist": false
+    }
+	]
 }
 ```
 
