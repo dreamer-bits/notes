@@ -129,6 +129,10 @@
 
 - 查看文件修改记录：`git log -p <file_name>`
 
+- 当在`.gitignore`中添加新的忽略项的时候将已经加入到仓库的文件移除`git`标记：
+
+  `git rm -r -f cached .`
+
 ### Linux记住git密码
 
 1. 在`~/`下， touch创建文件 `.git-credentials`, 用vim编辑此文件，输入：
